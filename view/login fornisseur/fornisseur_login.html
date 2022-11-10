@@ -9,12 +9,14 @@
    </head>
 <body>
   <!-- start of popup -->
-  <div id="popup">
+  <div id="popup" style="display: none;">
     <div id="popup_child">
       <div id="header_pop">
         <p>Error</p>
       </div>
-      <div id="underline"></div>
+      <div id="underline">
+
+      </div>
       <div id="message_pop">
       </div>
     </div>
@@ -27,21 +29,21 @@
     <div class="container">
       <div class="title">Login Supplier</div>
       <div class="content">
-        <form action="#">
+        <form action="#" id="logInForm">
           <div class="user-details">
             
             <div class="input-box">
               <span class="details">Email</span>
-              <input type="text" placeholder="Enter your Email" required>
+              <input type="text" placeholder="Enter your Email" required id="email">
             </div>
             <div class="input-box">
               <span class="details">Password</span>
-              <input type="text" placeholder="Enter your password" required>
+              <input type="password" placeholder="Enter your password" required id="password">
             </div>
           </div>
         
           <div class="button">
-            <input type="submit" value="LogIn">
+            <input type="submit" value="LogIn" id="logInButton">
           </div>
           <div id="go_login">
             <p>you dont have an account</p>
