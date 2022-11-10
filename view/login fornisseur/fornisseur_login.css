@@ -55,8 +55,15 @@ background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%,
   margin-top: 1.5%;
   width: 100%;
   height: fit-content;
-  color: gainsboro;
+  color: #865554;
   text-align: center;
+  background-color: #fdeded;
+  border-radius: 2.5px;
+  padding:1.5%;
+  flex-wrap: wrap;
+  text-align: center;
+  font-style: italic;
+
 }
 /*end of popup style*/
 header{
