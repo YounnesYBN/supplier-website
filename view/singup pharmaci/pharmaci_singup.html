@@ -1,76 +1,102 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="./pharmaci_singup.css">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Registration Form</title>
-     <script src="./../../jquery-3.6.1.min.js"></script>
-   </head>
-<body>
-  <!-- start of popup -->
-  <div id="popup" style="display: none;">
-    <div id="popup_child">
-      <div id="header_pop">
-        <p>Error</p>
-      </div>
-      <div id="underline">
-
-      </div>
-      <div id="message_pop">
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./pharmaci_singup.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration Form</title>
+    <script src="./../../jquery-3.6.1.min.js"></script>
+  </head>
+  <body>
+    <!-- start of popup -->
+    <div id="popup" style="display: none">
+      <div id="popup_child">
+        <div id="header_pop">
+          <p>Error</p>
+        </div>
+        <div id="underline"></div>
+        <div id="message_pop"></div>
       </div>
     </div>
-  </div>
-  <!-- end of popup -->
-  <header>
-    <button id="go_home"><a href="./../../index.html">Home</a></button>
-  </header>
-  <main>
-    <div class="container">
-      <div class="title">Registration pharmacy</div>
-      <div class="content">
-        <form action="#">
-          <div class="user-details">
-            <div class="input-box">
-              <span class="details">User Name</span>
-              <input type="text" placeholder="Enter your User name" required>
+    <!-- end of popup -->
+    <header>
+      <button id="go_home"><a href="./../../index.html">Home</a></button>
+    </header>
+    <main>
+      <div class="container">
+        <div class="title">Registration pharmacy</div>
+        <div class="content">
+          <form action="#" id="FornisseurSingupForm">
+            <div class="user-details">
+              <div class="input-box">
+                <span class="details">User Name</span>
+                <input
+                  type="text"
+                  placeholder="Enter your User name"
+                  required
+                  id="userName"
+                />
+              </div>
+              <div class="input-box">
+                <span class="details">Email</span>
+                <input
+                  type="text"
+                  placeholder="Enter your Email"
+                  required
+                  id="email"
+                />
+              </div>
+              <div class="input-box">
+                <span class="details">Adress</span>
+                <input
+                  type="text"
+                  placeholder="Enter your Adress"
+                  required
+                  id="adress"
+                />
+              </div>
+              <div class="input-box">
+                <span class="details">Phone Number</span>
+                <input
+                  type="text"
+                  placeholder="Enter your number"
+                  required
+                  id="tel"
+                />
+              </div>
+              <div class="input-box">
+                <span class="details">Password</span>
+                <input
+                  type="password"
+                  placeholder="Enter your password"
+                  required
+                  id="password"
+                />
+              </div>
+              <div class="input-box">
+                <span class="details">Confirm Password</span>
+                <input
+                  type="password"
+                  placeholder="Confirm your password"
+                  required
+                  id="con_password"
+                />
+              </div>
             </div>
-            <div class="input-box">
-              <span class="details">Email</span>
-              <input type="text" placeholder="Enter your Email" required>
+            <div class="button">
+              <input type="submit" value="Register" />
             </div>
-            <div class="input-box">
-              <span class="details">Adress</span>
-              <input type="text" placeholder="Enter your Adress" required>
+            <div id="go_login">
+              <p>Vous avez déjà un compte</p>
+              <button>
+                <a href="./../login pharmaci/pharmaci_login.html">login</a>
+              </button>
             </div>
-            <div class="input-box">
-              <span class="details">Phone Number</span>
-              <input type="text" placeholder="Enter your number" required>
-            </div>
-            <div class="input-box">
-              <span class="details">Password</span>
-              <input type="password" placeholder="Enter your password" required>
-            </div>
-            <div class="input-box">
-              <span class="details">Confirm Password</span>
-              <input type="password" placeholder="Confirm your password" required>
-            </div>
-          </div>
-        
-          <div class="button">
-            <input type="submit" value="Register">
-          </div>
-          <div id="go_login">
-            <p>Vous avez déjà un compte </p>
-            <button><a href="./../login pharmaci/pharmaci_login.html">login</a></button>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
-    </div>
-  </main>
-  <footer>
-
-  </footer>
-  <script src="./pharmaci_singup.js"></script>
-</body>
+    </main>
+    <footer></footer>
+    <script src="./pharmaci_singup.js"></script>
+  </body>
 </html>
