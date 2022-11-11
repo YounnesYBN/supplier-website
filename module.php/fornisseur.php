@@ -28,7 +28,7 @@ class Fornisseur{
             return $db;
 
         } catch (PDOException $e){
-            echo 'Erreur :' . $e->getMessage();
+            return false ;
         }
     }
     // function add fornisseur (sing up)
@@ -40,9 +40,25 @@ class Fornisseur{
         $add=$this->adresse;
         $tel=$this->tel;
         // insertion dans la table  fornisseure
-        $myreq=$database->exec("INSERT INTO fornesseur(nom,prenom,email,password,adress,tel) VALUES('$name','$prenom','$email','$pass','$add','$tel') ");
-        echo $myreq ? "<script>alert('tuple insert')</script>" : "<script>alert('problem d'insertion')</script>";
+        try {
+            $myreq=$database->exec("INSERT INTO fornesseur(nom,prenom,email,password,adress,tel) VALUES('$name','$prenom','$email','$pass','$add','$tel') ");
+            echo $myreq ? "<script>alert('tuple insert')</script>" : "<script>alert('problem d'insertion')</script>";
 
+        } catch (\Throwable $th) {
+            return false;
+        }
+        
+    }
+    public function verf_email(){
+        $myreq3=$database->prepare("SELECT * FROM email=?");
+        $myreq3->execute(array(
+            $this->email
+        ));
+        if($myreq3->fetch()){
+            return true;
+        }else{
+            return false ;
+        }
     }
     public function get_fornisseur($database){
                 $myreq2=$database->prepare("SELECT * FROM fornesseur WHERE email=? AND password=?;");
@@ -55,6 +71,7 @@ class Fornisseur{
                     return false;
                 }
             }
+   
     
 }
 
