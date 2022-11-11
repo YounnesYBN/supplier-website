@@ -3,16 +3,15 @@
 class Fornisseur{
 
     
-    private  string $nom;
-    private string $prenom;
+    private string $username;
     private string $email;
     private string $password;
     private string $adresse;
     private string $tel;
 
-    public  function __construct( string $nom="",string $prenom="",string $email="",string $password="",string $adresse="",string $tel=""){
-        $this-> nom=$nom;
-        $this-> prenom=$prenom;
+    public  function __construct(string $username="",string $email="",string $password="",string $adresse="",string $tel=""){
+        
+        $this-> username=$username;
         $this->email=$email;
         $this->password=$password;
         $this->adresse=$adresse;
@@ -33,23 +32,22 @@ class Fornisseur{
     }
     // function add fornisseur (sing up)
     public function add_fornisseur($database){
-        $name=$this->nom;
-        $prenom=$this-> prenom;
+        $username=$this-> username;
         $email=$this->email;
         $pass=$this->password;
         $add=$this->adresse;
         $tel=$this->tel;
         // insertion dans la table  fornisseure
         try {
-            $myreq=$database->exec("INSERT INTO fornesseur(nom,prenom,email,password,adress,tel) VALUES('$name','$prenom','$email','$pass','$add','$tel') ");
-            echo $myreq ? "<script>alert('tuple insert')</script>" : "<script>alert('problem d'insertion')</script>";
+            $myreq=$database->prepare("INSERT INTO fornesseur(username,email,password,adress,tel) VALUES(?,?,?,?,?) ");
+            $myreq->execute([$username,$email,$pass,$add,$tel]) ;
 
         } catch (\Throwable $th) {
             return false;
         }
         
     }
-    public function verf_email(){
+    public function verf_email($database){
         $myreq3=$database->prepare("SELECT * FROM email=?");
         $myreq3->execute(array(
             $this->email
