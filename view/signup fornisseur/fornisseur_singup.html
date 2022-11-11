@@ -29,27 +29,27 @@
     <div class="container">
       <div class="title">Registration Supplier</div>
       <div class="content">
-        <form action="#">
+        <form  method="post" action="#">
           <div class="user-details">
             <div class="input-box">
               <span class="details">User Name</span>
-              <input type="text" placeholder="Enter your User name" required>
+              <input type="text" placeholder="Enter your User name" name="name" required>
             </div>
             <div class="input-box">
               <span class="details">Email</span>
-              <input type="text" placeholder="Enter your Email" required>
+              <input type="text" placeholder="Enter your Email"  name="email" required>
             </div>
             <div class="input-box">
               <span class="details">Adress</span>
-              <input type="text" placeholder="Enter your Adress" required>
+              <input type="text" placeholder="Enter your Adress" name="adress" required>
             </div>
             <div class="input-box">
               <span class="details">Phone Number</span>
-              <input type="text" placeholder="Enter your number" required>
+              <input type="text" placeholder="Enter your number"  name="phone" required>
             </div>
             <div class="input-box">
               <span class="details">Password</span>
-              <input type="password" placeholder="Enter your password" required>
+              <input type="password" placeholder="Enter your password" name="password" required>
             </div>
             <div class="input-box">
               <span class="details">Confirm Password</span>
@@ -58,7 +58,7 @@
           </div>
         
           <div class="button">
-            <input type="submit" value="Register">
+            <input type="submit"  name="submit" value="Register">
           </div>
           <div id="go_login">
             <p>Vous avez déjà un compte </p>
