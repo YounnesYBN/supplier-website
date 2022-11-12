@@ -1,5 +1,5 @@
 <?php
-// class  fornesseur 
+// class  pharmaci 
 class Pharmacie{
 
     
@@ -30,14 +30,14 @@ class Pharmacie{
             return false ;
         }
     }
-    // function add fornisseur (sing up)
-    public function add_farmacie($database){
+    // function add pharmaci (sing up)
+    public function add_pharmaci($database){
         $username=$this-> username;
         $email=$this->email;
         $pass=$this->password;
         $add=$this->adresse;
         $tel=$this->tel;
-        // insertion dans la table  fornisseure
+        // insertion dans la table  pharmaci
         try {
             $myreq=$database->prepare("INSERT INTO pharmaci(intitul,email,password,adress,tel) VALUES(?,?,?,?,?) ");
             $myreq->execute([$username,$email,$pass,$add,$tel]) ;
