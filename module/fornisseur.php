@@ -21,7 +21,7 @@ class Fornisseur{
         try{
             $username="root";
             $passwordc='';
-            $dsn='musql:host=localhost;dbname=projet_db;port=3306;charset=utf8';
+            $dsn='mysql:host=localhost;dbname=projet_db;port=3306;charset=utf8';
             $db= new PDO($dsn,$username,$passwordc);
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return $db;
@@ -42,7 +42,7 @@ class Fornisseur{
             $myreq=$database->prepare("INSERT INTO fornesseur(username,email,password,adress,tel) VALUES(?,?,?,?,?) ");
             $myreq->execute([$username,$email,$pass,$add,$tel]) ;
 
-        } catch (\Throwable $th) {
+        } catch (Exception $th) {
             return false;
         }
         
