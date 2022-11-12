@@ -41,7 +41,7 @@ class Pharmacie{
         try {
             $myreq=$database->prepare("INSERT INTO pharmaci(intitul,email,password,adress,tel) VALUES(?,?,?,?,?) ");
             $myreq->execute([$username,$email,$pass,$add,$tel]) ;
-
+            return true;
         } catch (Exception $th) {
             return false;
         }
@@ -72,3 +72,5 @@ class Pharmacie{
    
     
 }
+
+?>

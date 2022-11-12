@@ -41,7 +41,7 @@ class Fornisseur{
         try {
             $myreq=$database->prepare("INSERT INTO fornesseur(username,email,password,adress,tel) VALUES(?,?,?,?,?) ");
             $myreq->execute([$username,$email,$pass,$add,$tel]) ;
-
+            return true;
         } catch (Exception $th) {
             return false;
         }
