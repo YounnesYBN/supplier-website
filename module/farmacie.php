@@ -1,6 +1,6 @@
 <?php
 // class  fornesseur 
-class Fornisseur{
+class Pharmacie{
 
     
     private string $username;
@@ -31,7 +31,7 @@ class Fornisseur{
         }
     }
     // function add fornisseur (sing up)
-    public function add_fornisseur($database){
+    public function add_farmacie($database){
         $username=$this-> username;
         $email=$this->email;
         $pass=$this->password;
@@ -39,7 +39,7 @@ class Fornisseur{
         $tel=$this->tel;
         // insertion dans la table  fornisseure
         try {
-            $myreq=$database->prepare("INSERT INTO fornesseur(username,email,password,adress,tel) VALUES(?,?,?,?,?) ");
+            $myreq=$database->prepare("INSERT INTO pharmaci(intitul,email,password,adress,tel) VALUES(?,?,?,?,?) ");
             $myreq->execute([$username,$email,$pass,$add,$tel]) ;
 
         } catch (Exception $th) {
@@ -48,7 +48,7 @@ class Fornisseur{
         
     }
     public function verf_email($database){
-        $myreq3=$database->prepare("SELECT * FROM  fornesseur where email=?");
+        $myreq3=$database->prepare("SELECT * FROM  pharmaci where email=?");
         $myreq3->execute(array(
             $this->email
         ));
@@ -59,7 +59,7 @@ class Fornisseur{
         }
     }
     public function get_fornisseur($database){
-                $myreq2=$database->prepare("SELECT * FROM fornesseur WHERE email=? AND password=?;");
+                $myreq2=$database->prepare("SELECT * FROM pharmaci WHERE email=? AND password=?;");
                 $myreq2->execute(array(
                     $this->email,$this->password
                 ));
@@ -72,5 +72,3 @@ class Fornisseur{
    
     
 }
-
-?>
