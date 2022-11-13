@@ -177,6 +177,22 @@ $(document).ready(()=>{
     $("#FornisseurSingupForm").submit(function(e){
         if(userNameValid==true&&emailValid==true&&adressValid==true&&telValid==true&&passwordValid==true&&checkPasswordValid==true){
             //send data with ajax
+            var username = document.getElementById("userName").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var adress = document.getElementById("adress").value;
+            var tel = document.getElementById("tel").value;
+            $.ajax({
+                type: "POST",
+                url: "http://localhost/my-projects/school%20project/control/fornisseur_singup_control.php",
+                data: {singup : "true",username:username,email:email,password:password,adress:adress,tel:tel},
+                dataType: "HTML",
+                success: function (response) {
+                    ActivePopUp(response)
+                    
+                }
+            });
+            
         }else{
             e.preventDefault()
             var message = convertErrorList()
