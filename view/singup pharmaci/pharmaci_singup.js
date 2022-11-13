@@ -187,7 +187,9 @@ $(document).ready(() => {
       passwordValid == true &&
       checkPasswordValid == true
     ) {
+      
       //send data with ajax
+
     } else {
       e.preventDefault();
       var message = convertErrorList();

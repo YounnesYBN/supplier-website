@@ -60,6 +60,17 @@ $(document).ready(()=>{
         onPasswordChange();
         if(emailValid==true & passwordValid==true){
             //here where we going to send data to backend which is controler
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            $.ajax({
+                type : "post",
+                url : "http://localhost/my-projects/school%20project/control/fornisseur_login_control.php",
+                data : {login : "true",email:email,password:password},
+                dataType : "HTML",
+                success : function(message){
+                    ActivePopUp(message)
+                }
+            })
         }else{
             var message = emailValid==false&passwordValid==false?"-Email is unvalide Exemple: 'username@gmail.com' <br> -passwored is unvalide .":emailValid==false?"-Email is unvalide Exemple: 'username@gmail.com'":"-passwored is unvalide ." ;
             ActivePopUp(message)
