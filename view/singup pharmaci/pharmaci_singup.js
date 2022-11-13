@@ -188,14 +188,19 @@ $(document).ready(() => {
       checkPasswordValid == true
     ) {
       //send data with ajax
-      var username=document.getElementById('userName');
-      var email=document.getElementById('email');
-      var adress=document.getElementById('adress');
-      var tel=document.getElementById('tel');
-      var password=document.getElementById('password');
+      var userName=document.getElementById('userName').value;
+      var email=document.getElementById('email').value;
+      var adress=document.getElementById('adress').value;
+      var tel=document.getElementById('tel').value;
+      var password=document.getElementById('password').value;
       $.ajax({
-        type="post",
-        url=""
+        type : "post",
+        url : "http://localhost/project-school/project-school/control/pharmacie_singup_control.php",
+        data :{singup :"true",userName:userName,email:email,adress:adress,tel:tel,password:password},
+        dataType :"HTML",
+        success : function(message){
+          ActivePopUp(message)
+      }
       })
 
     } else {
