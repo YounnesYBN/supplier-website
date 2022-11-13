@@ -187,8 +187,16 @@ $(document).ready(() => {
       passwordValid == true &&
       checkPasswordValid == true
     ) {
-      
       //send data with ajax
+      var username=document.getElementById('userName');
+      var email=document.getElementById('email');
+      var adress=document.getElementById('adress');
+      var tel=document.getElementById('tel');
+      var password=document.getElementById('password');
+      $.ajax({
+        type="post",
+        url=""
+      })
 
     } else {
       e.preventDefault();
