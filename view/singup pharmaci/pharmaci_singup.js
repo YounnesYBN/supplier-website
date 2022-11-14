@@ -195,7 +195,7 @@ $(document).ready(() => {
       var password=document.getElementById('password').value;
       $.ajax({
         type : "post",
-        url : "http://localhost/project-school/project-school/control/pharmacie_singup_control.php",
+        url : "http://localhost/my-projects/school%20project/control/pharmacie_singup_control.php",
         data :{singup :"true",userName:userName,email:email,adress:adress,tel:tel,password:password},
         dataType :"HTML",
         success : function(message){

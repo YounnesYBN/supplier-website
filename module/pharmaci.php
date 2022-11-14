@@ -39,7 +39,7 @@ class Pharmacie{
         $tel=$this->tel;
         // insertion dans la table  pharmaci
         try {
-            $myreq=$database->prepare("INSERT INTO pharmaci(intitul,eamil,password,adress,tel) VALUES(?,?,?,?,?) ");
+            $myreq=$database->prepare("INSERT INTO pharmaci(intitul,email,password,adress,tel) VALUES(?,?,?,?,?) ");
             $myreq->execute([$username,$email,$pass,$add,$tel]) ;
             return true;
         } catch (Exception $th) {
@@ -48,7 +48,7 @@ class Pharmacie{
         
     }
     public function verf_email($database){
-        $myreq3=$database->prepare("SELECT * FROM  pharmaci where eamil=?");
+        $myreq3=$database->prepare("SELECT * FROM  pharmaci where email=?");
         $myreq3->execute(array(
             $this->email
         ));
@@ -59,7 +59,7 @@ class Pharmacie{
         }
     }
     public function get_fornisseur($database){
-                $myreq2=$database->prepare("SELECT * FROM pharmaci WHERE eamil=? AND password=?;");
+                $myreq2=$database->prepare("SELECT * FROM pharmaci WHERE email=? AND password=?;");
                 $myreq2->execute(array(
                     $this->email,$this->password
                 ));
