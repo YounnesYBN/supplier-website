@@ -6,6 +6,7 @@ $(document).ready(function(e){
             data : {choice:"pharmaci"},
             dataType : "HTML"
         })
+        location.href = "http://localhost/my-projects/school%20project/view/singup pharmaci/pharmaci_singup.html"
     })
     $("#button2").click(function(e){
         $.ajax({
@@ -14,6 +15,7 @@ $(document).ready(function(e){
             data : {choice:"fornisseur"},
             dataType : "HTML"
         })
+        location.href = "http://localhost/my-projects/school%20project/view/singup fornisseur/fornisseur_singup.html"
     })
 
 
