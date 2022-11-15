@@ -58,7 +58,7 @@ class Pharmacie{
             return false ;
         }
     }
-    public function get_fornisseur($database){
+    public function get_pharmaci($database){
                 $myreq2=$database->prepare("SELECT * FROM pharmaci WHERE email=? AND password=?;");
                 $myreq2->execute(array(
                     $this->email,$this->password

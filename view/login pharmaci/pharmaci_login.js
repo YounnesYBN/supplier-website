@@ -59,7 +59,17 @@ $(document).ready(()=>{
         onEmailChange();
         onPasswordChange();
         if(emailValid==true & passwordValid==true){
-            
+            var email = document.getElementById("email").value
+            var password = document.getElementById("password").value
+            $.ajax({
+                type: "post",
+                url: "http://localhost/my-projects/school%20project/control/pharmaci_login_control.php",
+                data: {login:"true",email:email,password:password},
+                dataType: "HTML",
+                success: function (response) {
+                    ActivePopUp(response)
+                }
+            });
         
         }else{
             var message = emailValid==false&passwordValid==false?"-Email is unvalide Exemple: 'username@gmail.com' <br> -passwored is unvalide at least 8 caracter .":emailValid==false?"-Email is unvalide Exemple: 'username@gmail.com'":"-passwored is unvalide at least 8 caracter ." ;
