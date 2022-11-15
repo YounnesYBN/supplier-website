@@ -1,6 +1,11 @@
-<?php 
+<?php
+session_start();
 include "../module/fornisseur.php";
 if(isset($_POST["login"])){
+    
+    $_SESSION["pharmaci"] = false;
+    $_SESSION["fornisseur"] = true;
+
     $email = $_POST["email"];
     $password = $_POST["password"];
     $fornisseur = new Fornisseur("",$email,$password,"","");
@@ -8,6 +13,7 @@ if(isset($_POST["login"])){
     if($database!=false){
         $get_for = $fornisseur->get_fornisseur($database);
         if($get_for==true){
+            $_SESSION["accessPass"] = "true";
             echo "login succsess";
         }else{
             echo "login faild" ;

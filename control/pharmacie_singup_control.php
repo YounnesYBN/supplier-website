@@ -1,6 +1,11 @@
 <?php
+session_start();
 include "../module/pharmaci.php";
 if(isset($_POST['singup'])){
+
+    $_SESSION["pharmaci"] = true;
+    $_SESSION["fornisseur"] = false;
+
     $username=$_POST['userName'];
     $email=$_POST['email'];
     $adress=$_POST['adress'];
@@ -13,6 +18,7 @@ if(isset($_POST['singup'])){
         if($verf_email==false){
             $add_pharmacie=$pharmacie->add_pharmaci($database);
             if($add_pharmacie==true ){
+                $_SESSION["accessPass"] = "true";
                 echo "sing up  successes";
             }else{
                 echo "sing up filed";

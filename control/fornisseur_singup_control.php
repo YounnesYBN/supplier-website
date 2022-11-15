@@ -1,7 +1,12 @@
 <?php
+session_start();
 require "./../module/fornisseur.php";
 
 if(isset($_POST["singup"])){
+
+    $_SESSION["pharmaci"] = false;
+    $_SESSION["fornisseur"] = true;
+    
     $username = $_POST["username"];
     $email = $_POST["email"];
     $password = $_POST["password"];
@@ -14,6 +19,7 @@ if(isset($_POST["singup"])){
         if($checkEmail==false){
             $addForniseur = $fornisseur->add_fornisseur($database);
             if($addForniseur==true){
+                $_SESSION["accessPass"] = "true";
                 echo "singup successfully";
             }else{
                 echo "singup faild somthing went wrong";
