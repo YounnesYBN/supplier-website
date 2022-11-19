@@ -69,8 +69,27 @@ class Fornisseur{
                     return false;
                 }
             }
+    public function Set_info_session($database){
+        $myreq=$database->prepare("SELECT * FROM  fornesseur where email=?");
+        $myreq->execute(array(
+            $this->email
+        ));
+        if($info=$myreq->fetch()){
+            session_start();
+            $id = $info["id_for"];
+            $email = $info["email"];
+            $username = $info["username"];
+            $_SESSION["id"] = $id;
+            $_SESSION["email"] = $email;
+            $_SESSION["username"] = $username;
+            
+        }
+    }
    
     
 }
+
+$for = new Fornisseur("","younnesybn@outlook.com","0123456789");
+$for->Set_info_session($for->conect_db());
 
 ?>

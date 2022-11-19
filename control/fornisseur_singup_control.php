@@ -20,6 +20,7 @@ if(isset($_POST["singup"])){
             $addForniseur = $fornisseur->add_fornisseur($database);
             if($addForniseur==true){
                 $_SESSION["accessPass"] = "true";
+                $fornisseur->Set_info_session($database);
                 echo "singup successfully";
             }else{
                 echo "singup faild somthing went wrong";

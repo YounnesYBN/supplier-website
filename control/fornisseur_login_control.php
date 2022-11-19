@@ -14,6 +14,7 @@ if(isset($_POST["login"])){
         $get_for = $fornisseur->get_fornisseur($database);
         if($get_for==true){
             $_SESSION["accessPass"] = "true";
+            $fornisseur->Set_info_session($database);
             echo "login succsess";
         }else{
             echo "login faild" ;
