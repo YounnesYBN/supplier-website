@@ -65,9 +65,13 @@ $(document).ready(()=>{
                 type: "post",
                 url: "http://localhost/my-projects/school%20project/control/pharmaci_login_control.php",
                 data: {login:"true",email:email,password:password},
-                dataType: "HTML",
+                dataType: "JSON",
                 success: function (response) {
-                    ActivePopUp(response)
+                    if(response.error==true){
+                        ActivePopUp(response.message)
+                    }else{
+                    
+                    }
                 }
             });
         

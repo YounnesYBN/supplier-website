@@ -75,7 +75,6 @@ class Fornisseur{
             $this->email
         ));
         if($info=$myreq->fetch()){
-            session_start();
             $id = $info["id_for"];
             $email = $info["email"];
             $username = $info["username"];

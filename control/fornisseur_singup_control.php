@@ -21,16 +21,18 @@ if(isset($_POST["singup"])){
             if($addForniseur==true){
                 $_SESSION["accessPass"] = "true";
                 $fornisseur->Set_info_session($database);
-                echo "singup successfully";
+                echo json_encode(["error"=>false]);
             }else{
-                echo "singup faild somthing went wrong";
+                echo json_encode(["error"=>true,"message"=>"singup faild somthing went wrong"]);
+
             }
         }else{
-            echo "this email is already exist";
+            echo json_encode(["error"=>true,"message"=>"this email is already exist"]);
         }
 
     }else{
-        echo "error in database" ;
+        echo json_encode(["error"=>true,"message"=>"error in database"]);
+
     }
 }
 

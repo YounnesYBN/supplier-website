@@ -19,16 +19,18 @@ if(isset($_POST['singup'])){
             $add_pharmacie=$pharmacie->add_pharmaci($database);
             if($add_pharmacie==true ){
                 $_SESSION["accessPass"] = "true";
-                echo "sing up  successes";
+                echo json_encode(["error"=>false]);
             }else{
-                echo "sing up filed";
+                echo json_encode(["error"=>true,"message"=>"singup faild"]);
+                
             }
         }else{
-            echo "this email is exist ";
+            echo json_encode(["error"=>true,"message"=>"this email is exist "]);
+
         }
 
     }else{
-        echo "error in database";
+        echo json_encode(["error"=>true,"message"=>"error database"]);
     }
 
 }

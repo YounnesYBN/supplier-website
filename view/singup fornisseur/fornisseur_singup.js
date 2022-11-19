@@ -186,9 +186,14 @@ $(document).ready(()=>{
                 type: "POST",
                 url: "http://localhost/my-projects/school%20project/control/fornisseur_singup_control.php",
                 data: {singup : "true",username:username,email:email,password:password,adress:adress,tel:tel},
-                dataType: "HTML",
+                dataType: "json",
                 success: function (response) {
-                    ActivePopUp(response)
+                    console.log(response)
+                    if(response.error==true){
+                        ActivePopUp(response.message)
+                    }else{
+                        location.href = "http://localhost/my-projects/school%20project/view/fornisseur%20pages/fornisseur%20page/fornisseur_home.php"
+                    }
                     
                 }
             });

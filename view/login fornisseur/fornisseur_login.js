@@ -9,7 +9,6 @@ $(document).ready(()=>{
         $("#popup").fadeOut(500); 
     });
     function ActivePopUp(message){
-        console.log(document.getElementById("message_pop"))
         document.getElementById("message_pop").innerHTML= message
         $("#popup").fadeIn(500); 
     }
@@ -37,7 +36,7 @@ $(document).ready(()=>{
         const passWordEle = document.getElementById("password");
         const passWordVal = passWordEle.value;
         const passWordlen = passWordVal.length
-        if(passWordlen>0){
+        if(passWordlen>=10){
             passWordEle.style.borderColor = "#9b59b6";
             passwordValid = true;
 
@@ -66,9 +65,15 @@ $(document).ready(()=>{
                 type : "post",
                 url : "http://localhost/my-projects/school%20project/control/fornisseur_login_control.php",
                 data : {login : "true",email:email,password:password},
-                dataType : "HTML",
-                success : function(message){
-                    ActivePopUp(message)
+                dataType : "json",
+                success : function(response){
+                    
+                    if(response.error==true){
+                        ActivePopUp(response.message)
+                        
+                    }else{
+                        location.href = "http://localhost/my-projects/school%20project/view/fornisseur%20pages/fornisseur%20page/fornisseur_home.php"
+                    }
                 }
             })
         }else{

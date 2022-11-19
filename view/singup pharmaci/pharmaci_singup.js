@@ -197,9 +197,12 @@ $(document).ready(() => {
         type : "post",
         url : "http://localhost/my-projects/school%20project/control/pharmacie_singup_control.php",
         data :{singup :"true",userName:userName,email:email,adress:adress,tel:tel,password:password},
-        dataType :"HTML",
-        success : function(message){
-          ActivePopUp(message)
+        dataType :"JSON",
+        success : function(response){
+          if(response.error==true){
+            ActivePopUp(response.message)
+        }else{
+        }
       }
       })
 

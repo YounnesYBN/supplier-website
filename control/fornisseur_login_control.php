@@ -15,12 +15,12 @@ if(isset($_POST["login"])){
         if($get_for==true){
             $_SESSION["accessPass"] = "true";
             $fornisseur->Set_info_session($database);
-            echo "login succsess";
+            echo json_encode(["error"=>false]);
         }else{
-            echo "login faild" ;
+            echo json_encode(["error"=>true,"message"=>"login faild"]);
         }
     }else{
-        echo "error in database";
+        echo json_encode(["error"=>true,"message"=>"error in database"]);
     }
 
 }
