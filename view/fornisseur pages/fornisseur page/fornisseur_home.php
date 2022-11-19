@@ -1,15 +1,16 @@
-<?php 
+<?php
 session_start();
 if(isset($_SESSION["accessPass"])){
     if($_SESSION["accessPass"]==false){
-        header("Location:http://localhost/my-projects/school%20project/view/login%20fornisseur/fornisseur_login.html");
-        exit();
+    
+    header("Location:http://localhost/my-projects/school%20project/view/login%20fornisseur/fornisseur_login.html");                 
+    
     }
 }else{
-    header("Location:http://localhost/my-projects/school%20project/view/login%20fornisseur/fornisseur_login.html");
-    exit();
     
+    header("Location:http://localhost/my-projects/school%20project/view/login%20fornisseur/fornisseur_login.html");                 
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -152,7 +153,7 @@ if(isset($_SESSION["accessPass"])){
 </div>
 <!--end add popup -->
 <header>
-
+    <button id="logout">Exit</button>
 </header>
 <main>
     

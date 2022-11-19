@@ -58,6 +58,20 @@ $(document).ready(function(){
         $("#success_popup").fadeIn(500); 
     }
     //succes error popup
+
+    //exite button
+    $("#logout").click(()=>{
+        $.ajax({
+            type: "post",
+            url: "http://localhost/my-projects/school%20project/control/fornisseur_home_page_control.php",
+            data: {logout:"true"},
+            dataType: "HTML",
+            success: function (response) {
+                location.href="http://localhost/my-projects/school%20project/index.html"
+            }
+        });
+    })
+    //exite button
     
 
     

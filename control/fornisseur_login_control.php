@@ -13,7 +13,7 @@ if(isset($_POST["login"])){
     if($database!=false){
         $get_for = $fornisseur->get_fornisseur($database);
         if($get_for==true){
-            $_SESSION["accessPass"] = "true";
+            $_SESSION["accessPass"] = true;
             $fornisseur->Set_info_session($database);
             echo json_encode(["error"=>false]);
         }else{

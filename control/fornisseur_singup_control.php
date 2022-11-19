@@ -19,7 +19,7 @@ if(isset($_POST["singup"])){
         if($checkEmail==false){
             $addForniseur = $fornisseur->add_fornisseur($database);
             if($addForniseur==true){
-                $_SESSION["accessPass"] = "true";
+                $_SESSION["accessPass"] = true;
                 $fornisseur->Set_info_session($database);
                 echo json_encode(["error"=>false]);
             }else{
