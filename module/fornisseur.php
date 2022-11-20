@@ -88,7 +88,4 @@ class Fornisseur{
     
 }
 
-$for = new Fornisseur("","younnesybn@outlook.com","0123456789");
-$for->Set_info_session($for->conect_db());
-
 ?>
