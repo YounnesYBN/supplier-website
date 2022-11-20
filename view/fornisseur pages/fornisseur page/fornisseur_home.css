@@ -21,9 +21,49 @@ header{
     align-items: center;
 
 }
-header button{
-  width: 50px;
-  height: 20px;
+
+#logout{
+  width: 10%;
+  height: 29px;
+  margin-right: 3%;
+  appearance: none;
+  background-color: white;
+  border: 2px solid #f40d3c;
+  border-radius: 5px;
+  box-sizing: border-box;
+  color: #f40d3c;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  min-width: 0;
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  will-change: transform;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#logout:disabled {
+  pointer-events: none;
+}
+#logout:hover {
+  color: white;
+  background-color: #f40d3c;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-3px);
+}
+
+#logout:active {
+  box-shadow: none;
+  transform: translateY(0);
 }
 main{
     width: 100%;

@@ -1,4 +1,18 @@
 $(document).ready(function(){
+    //check access
+    $.ajax({
+        type: "get",
+        url: "http://localhost/my-projects/school%20project/control/fornisseur_home_page_control.php",
+        data: {checkAccess : "true"},
+        dataType: "JSON",
+        success: function (response) {
+            if(response.allow==false){
+                location.href ="http://localhost/my-projects/school%20project/view/login%20fornisseur/fornisseur_login.html" 
+            }
+        }
+    });
+    //check access
+
     //add popup
     $("#add_med").click(function(e){
         $("#add_popup").fadeIn();

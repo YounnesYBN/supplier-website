@@ -184,7 +184,7 @@ $(document).ready(()=>{
             var tel = document.getElementById("tel").value;
             $.ajax({
                 type: "POST",
-                url: "http://localhost/my-projects/school%20project/control/fornisseur_singup_control.php",
+                url: "http://localhost/my-projects/school%20project/control/fornisseur_singup_control.html",
                 data: {singup : "true",username:username,email:email,password:password,adress:adress,tel:tel},
                 dataType: "json",
                 success: function (response) {
@@ -192,7 +192,7 @@ $(document).ready(()=>{
                     if(response.error==true){
                         ActivePopUp(response.message)
                     }else{
-                        location.href = "http://localhost/my-projects/school%20project/view/fornisseur%20pages/fornisseur%20page/fornisseur_home.php"
+                        location.href = "http://localhost/my-projects/school%20project/view/fornisseur%20pages/fornisseur%20page/fornisseur_home.html"
                     }
                     
                 }
