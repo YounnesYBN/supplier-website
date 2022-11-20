@@ -184,7 +184,7 @@ $(document).ready(()=>{
             var tel = document.getElementById("tel").value;
             $.ajax({
                 type: "POST",
-                url: "http://localhost/my-projects/school%20project/control/fornisseur_singup_control.html",
+                url: "http://localhost/my-projects/school%20project/control/fornisseur_singup_control.php",
                 data: {singup : "true",username:username,email:email,password:password,adress:adress,tel:tel},
                 dataType: "json",
                 success: function (response) {

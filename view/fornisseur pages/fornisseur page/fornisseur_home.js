@@ -7,7 +7,8 @@ $(document).ready(function(){
         dataType: "JSON",
         success: function (response) {
             if(response.allow==false){
-                location.href ="http://localhost/my-projects/school%20project/view/login%20fornisseur/fornisseur_login.html" 
+                console.log(response.allow)
+                // location.href ="http://localhost/my-projects/school%20project/view/login%20fornisseur/fornisseur_login.html" 
             }
         }
     });
