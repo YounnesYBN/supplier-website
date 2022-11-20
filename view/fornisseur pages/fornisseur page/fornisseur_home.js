@@ -6,9 +6,9 @@ $(document).ready(function(){
         data: {checkAccess : "true"},
         dataType: "JSON",
         success: function (response) {
+            console.log(response)
             if(response.allow==false){
-                console.log(response.allow)
-                // location.href ="http://localhost/my-projects/school%20project/view/login%20fornisseur/fornisseur_login.html" 
+                location.href ="http://localhost/my-projects/school%20project/view/login%20fornisseur/fornisseur_login.html" 
             }
         }
     });

@@ -70,6 +70,7 @@ $(document).ready(()=>{
                     if(response.error==true){
                         ActivePopUp(response.message)
                     }else{
+                        location.href = "http://localhost/my-projects/school%20project/view/fornisseur%20pages/fornisseur%20page/fornisseur_home.html"
                     
                     }
                 }
