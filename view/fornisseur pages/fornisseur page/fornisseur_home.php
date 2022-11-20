@@ -1,14 +1,15 @@
 <?php
 session_start();
 if(isset($_SESSION["accessPass"])){
-    if($_SESSION["accessPass"]==false){
-    
-    header("Location:http://localhost/my-projects/school%20project/view/login%20fornisseur/fornisseur_login.html");                 
-    
+    if($_SESSION["accessPass"]){
+    }else{
+        header("Location:http://localhost/my-projects/school%20project/view/login%20fornisseur/fornisseur_login.html");                 
+        exit();
     }
 }else{
     
     header("Location:http://localhost/my-projects/school%20project/view/login%20fornisseur/fornisseur_login.html");                 
+    exit();
 }
 
 ?>

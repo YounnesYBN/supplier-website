@@ -67,7 +67,7 @@ $(document).ready(function(){
             data: {logout:"true"},
             dataType: "HTML",
             success: function (response) {
-                location.href="http://localhost/my-projects/school%20project/index.html"
+                location.href="http://localhost/my-projects/school%20project/index.html";
             }
         });
     })
