@@ -98,8 +98,7 @@ class Medicament_fornisseur {
     }
 }
 
-// $f = new Medicament_fornisseur("","5");
-// echo $f->convert_array_to_option(($f->get_all_med_for($f->connect_bd()))); 
+
 
 
 
