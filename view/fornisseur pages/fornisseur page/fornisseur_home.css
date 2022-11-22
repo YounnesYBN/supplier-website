@@ -17,9 +17,36 @@ header{
     border-radius: 0px 0px 10px 10px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
-
+  
+}
+#user_info_con{
+  width: 60%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#username_email_con{
+  width: 100%;
+  height: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 5%;
+  gap: 1%;
+}
+#username_email_con #username{
+  font-size: 23px;
+  color: #262322;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-style: italic;
+}
+#username_email_con #email{
+  color: #8b8c89;
 }
 
 #logout{

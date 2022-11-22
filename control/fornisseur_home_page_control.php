@@ -1,4 +1,5 @@
 <?php 
+include "./../module/medicament_fornisseur.php";
 session_start();
 if(isset($_GET["checkAccess"])){
 
@@ -23,5 +24,18 @@ if(isset($_POST["logout"])){
     $_SESSION["username"] ="";
 }
 
+if(isset($_GET["get_info"])){
+    $forId = $_SESSION["id"];
+    $for = new Medicament_fornisseur("",$forId);
+    $database = $for->connect_bd();
+    $MedForArray = $for->get_all_med_for($database);
+    $username = $_SESSION["username"] ;
+    $email = $_SESSION["email"] ;
+    $deletOption = $for->convert_array_to_optionDelete($MedForArray);
+    $editeOption = $for->convert_array_to_optionEdite($MedForArray);
+    $medCom = $for->convert_array_to_medComponent($MedForArray);
+
+    echo json_encode(["username"=>$username,"email"=>$email,"deleteOption"=>$deletOption,"editeOption"=>$editeOption,"medCom"=>$medCom]);
+}
 
 ?>

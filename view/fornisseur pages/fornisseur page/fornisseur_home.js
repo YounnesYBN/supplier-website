@@ -13,6 +13,22 @@ $(document).ready(function(){
         }
     });
     //check access
+    //get user data every time we login
+    $.ajax({
+        type: "GET",
+        url: "http://localhost/my-projects/school%20project/control/fornisseur_home_page_control.php",
+        data: {get_info:"true"},
+        dataType: "JSON",
+        success: function (response) {
+            document.getElementById("username").innerText = response.username;
+            document.getElementById("email").innerText += response.email;
+            document.getElementById("edite_select").innerHTML += response.editeOption;
+            document.getElementById("delete_select").innerHTML += response.deleteOption;
+            document.getElementById("display").innerHTML = response.medCom;
+        }   
+    });
+
+    //get user data every time we login
 
     //add popup
     $("#add_med").click(function(e){
@@ -168,7 +184,9 @@ $(document).ready(function(){
     })
     // Anas code
     //code to controle delete popup
+    
         selectValidDelete = true;
+
         function onSelectDeleteChange(){
             const selectDeleteElement = document.getElementById("delete_select")
             const selectDeleteval = selectDeleteElement.value
@@ -183,13 +201,16 @@ $(document).ready(function(){
         }
         $("#delete_select").change((e)=>{
             onSelectDeleteChange()
+                
         })
         $("#delete").click((e)=>{
             e.stopPropagation()
             onSelectDeleteChange()
 
             if(selectValidDelete){
-                ActiveSuccessPopUp("-deleted successully")
+                const medIdDelete =document.getElementById("delete_select").value
+                
+                // ActiveSuccessPopUp("-deleted successully")
             }else{
                 ActiveErrorPopUp("-you need to choose a medicent")
             }
@@ -288,7 +309,11 @@ $(document).ready(function(){
         onPriceChangeEdite()
         onSelectEditeChange()
         if(nameValidEdite==true&numberValidEdite==true&priceValidEdite==true&selectValidEdite==true){
-            ActiveSuccessPopUp("inputs are valide")
+            const idmed= $("#edite_select option:selected").attr("idmed")
+            const nommed= $("#edite_select option:selected").attr("nommed")
+            const qtemed= $("#edite_select option:selected").attr("qte")
+            const pricemed= $("#edite_select option:selected").attr("price")
+            // ActiveSuccessPopUp("inputs are valide")
         }else{
             var message = Object.values(editeErrorObject).filter((value)=>{
                 if(value.length>0){
