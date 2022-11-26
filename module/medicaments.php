@@ -21,7 +21,7 @@
     }
      public function add_midec($database){
         try{
-            $medic=$database->exec("CALL add_medic('". $this->nom."')");
+            $medic=$database->exec("INSERT INTO medicament(nom) values(' $this->nom')");
             return true ;
         }catch(Exception $e){
             return false ;
@@ -39,7 +39,18 @@
             return $e ;
         }
      }
+     public function delete_medic($database,$id){
+        try{
+            $req2=$database->prepare("DELETE FROM medicament where id=?");
+            $req2->execute([$id]);
+            return true;
+        }catch(Exception $e){
+            return false ;
+        }
+     }
 }
+
+
 
 
 ?>
