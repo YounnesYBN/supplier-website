@@ -90,7 +90,7 @@ $(document).ready(function(){
     }
     //succes error popup
 
-    //anas code
+    //code to controle add popup
     var addErrorObject = {nameErr : "",numberErr:"",priceErr:""}
     var nameValidAdd = true;
     var numberValidAdd = true;
@@ -171,6 +171,7 @@ $(document).ready(function(){
             var name = document.getElementById("medicient_name").value
             var number = document.getElementById("number_of_medicents").value
             var price = document.getElementById("price").value
+            
 
             ActiveSuccessPopUp("input are valide")
         }else{
@@ -182,7 +183,8 @@ $(document).ready(function(){
            ActiveErrorPopUp(message)
         }
     })
-    // Anas code
+    // code to controle add popup
+
     //code to controle delete popup
     
         selectValidDelete = true;
@@ -209,6 +211,7 @@ $(document).ready(function(){
 
             if(selectValidDelete){
                 const medIdDelete =document.getElementById("delete_select").value
+                    
                 
                 // ActiveSuccessPopUp("-deleted successully")
             }else{

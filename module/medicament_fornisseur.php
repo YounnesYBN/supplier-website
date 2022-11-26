@@ -39,10 +39,10 @@ class Medicament_fornisseur
             return $e;
         }
     }
-    public function check_med_for_existe($database)
+    public function check_med_for_existe($database,$nomMed)
     {
         $req = $database->prepare("call check_med_for_existe(?,?)");
-        $req->execute([$this->med_id, $this->for_id]);
+        $req->execute([$nomMed, $this->for_id]);
         $result = $req->fetch();
         return $result["exist"];
     }
@@ -122,5 +122,7 @@ class Medicament_fornisseur
         }
         return $allComponent;
     }
+    
 }
+
 ?>

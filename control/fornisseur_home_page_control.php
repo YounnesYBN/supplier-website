@@ -38,4 +38,6 @@ if(isset($_GET["get_info"])){
     echo json_encode(["username"=>$username,"email"=>$email,"deleteOption"=>$deletOption,"editeOption"=>$editeOption,"medCom"=>$medCom]);
 }
 
+
+
 ?>
