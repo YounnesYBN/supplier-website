@@ -218,11 +218,19 @@ $(document).ready(function(){
         
 
     //code to controle delete popup
+
+    //code to controle edite popup
     var editeErrorObject = {nameErr : "",numberErr:"",priceErr:"",editeSelect:""}
     var selectValidEdite = true;
     var nameValidEdite = true;
     var numberValidEdite = true;
     var priceValidEdite = true;
+
+    function setInputs(editenom,editeqte,editeprice){
+        document.getElementById("medicient_name_edite").value = editenom
+        document.getElementById("number_of_medicents_edite").value = editeqte
+        document.getElementById("price_edite").value = editeprice
+    }
     function onNameChangeEdite(){
         const nameEle = document.getElementById("medicient_name_edite")
         const nameVal = nameEle.value
@@ -292,8 +300,16 @@ $(document).ready(function(){
             selectDeleteElement.style.borderColor = "red";
             selectValidEdite = false;
             editeErrorObject.editeSelect = "-you need  to select a medicent"
-
+            setInputs("","","");
         }else{
+            const nommed= $("#edite_select option:selected").attr("nommed")
+            const qtemed= $("#edite_select option:selected").attr("qte")
+            const pricemed= $("#edite_select option:selected").attr("price")
+            setInputs(nommed,qtemed,pricemed);
+            onNameChangeEdite()
+            onNumberChangeEdite()
+            onPriceChangeEdite()
+
             selectDeleteElement.style.borderColor = "#00d4ff";
             selectValidEdite = true;
             editeErrorObject.editeSelect = ""
@@ -309,10 +325,10 @@ $(document).ready(function(){
         onPriceChangeEdite()
         onSelectEditeChange()
         if(nameValidEdite==true&numberValidEdite==true&priceValidEdite==true&selectValidEdite==true){
-            const idmed= $("#edite_select option:selected").attr("idmed")
-            const nommed= $("#edite_select option:selected").attr("nommed")
-            const qtemed= $("#edite_select option:selected").attr("qte")
-            const pricemed= $("#edite_select option:selected").attr("price")
+            var idmed= $("#edite_select option:selected").attr("idmed")
+            var newNomMed = document.getElementById("medicient_name_edite").value 
+            var newQteMed = document.getElementById("number_of_medicents_edite").value 
+            var newPriceMed = document.getElementById("price_edite").value 
             // ActiveSuccessPopUp("inputs are valide")
         }else{
             var message = Object.values(editeErrorObject).filter((value)=>{
