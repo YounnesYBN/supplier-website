@@ -30,27 +30,26 @@
      }
      public function get_id_medic($database){
         try{
-            $req=$database->prepare("SELECT id_med from medicament where nom=?");
+            $req=$database->prepare(" SELECT id_med from medicament where nom=? ");
             $req->execute([$this->nom]);
             $result = $req->fetch();
             return $result["id_med"];
             
+            
         }catch(Exception $e){
-            return $e ;
+            return false;
         }
      }
      public function delete_medic($database,$id){
         try{
-            $req2=$database->prepare("DELETE FROM medicament where id=?");
+            $req2=$database->prepare(" DELETE FROM medicament where id_med=? ");
             $req2->execute([$id]);
             return true;
         }catch(Exception $e){
-            return false ;
+            return false;
         }
      }
 }
-
-
 
 
 ?>
