@@ -60,6 +60,12 @@ class Medicament_fornisseur
         }
         return $allresultArray;
     }
+    public function checkIfOtherMedHaveSameName($database,$compareName){
+        $req = $database->prepare("call checkIfOtherMedHaveSameName(?,?,?)");
+        $req->execute([$compareName,$this->for_id,$this->med_id]);
+        $result = $req->fetch();
+        return $result["exist"];
+    }
     public function convert_array_to_optionDelete($arrays)
     {
         $allOption = "";
