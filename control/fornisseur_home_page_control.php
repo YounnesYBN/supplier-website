@@ -37,7 +37,25 @@ if(isset($_GET["get_info"])){
 
     echo json_encode(["username"=>$username,"email"=>$email,"deleteOption"=>$deletOption,"editeOption"=>$editeOption,"medCom"=>$medCom]);
 }
+include "./../module/medicaments.php";
+if(isset($_POST['delete'])){
+    $id=$_POST['medIdDelete'];
+    $mede1= new Medicament("");
+    $db=$mede1->connect_db();
+    if($db!=false){
+        $delete=$mede1->delete_medic($db,$id);
+        if($delete="true"){
+            echo json_encode(["error"=>false,"message"=>"delete ok"]);
+        }else{
+            echo json_encode(["error"=>true,"message"=>"delete faild"]);
+        }
+        
+    }else{
+        echo json_encode(["error"=>true,"message"=>"error in database"]);
+    }
+    
 
+}
 
 
 ?>
