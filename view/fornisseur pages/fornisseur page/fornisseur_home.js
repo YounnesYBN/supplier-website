@@ -223,12 +223,11 @@ $(document).ready(function(){
                             
                         }else{
                             ActiveSuccessPopUp(response.message);
+                            setTimeout(()=>{location.reload();},2000)
+                            
                         }
                     }
                 })
-                    
-                
-                // ActiveSuccessPopUp("-deleted successully")
             }else{
                 ActiveErrorPopUp("-you need to choose a medicent")
             }
@@ -356,7 +355,7 @@ $(document).ready(function(){
                         ActiveErrorPopUp(response.message)
                     }else{
                         ActiveSuccessPopUp(response.message)
-                        location.reload()
+                        setTimeout(()=>{location.reload();},2000)
                     }
                 }
             });
