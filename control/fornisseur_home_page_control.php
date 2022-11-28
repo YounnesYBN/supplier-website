@@ -38,6 +38,31 @@ if(isset($_GET["get_info"])){
     echo json_encode(["username"=>$username,"email"=>$email,"deleteOption"=>$deletOption,"editeOption"=>$editeOption,"medCom"=>$medCom]);
 }
 
+if(isset($_POST["edite"])){
+    $id_for = $_SESSION["id"];
+    $id_med = $_POST["idmed"];
+    $newNomMed = $_POST["newNomMed"];
+    $newQteMed = $_POST["newQteMed"];
+    $newPriceMed = $_POST["newPriceMed"];
+    $med_for = new Medicament_fornisseur($id_med,$id_for);
+    $database = $med_for->connect_bd();
+    if($database!=false){
+        $checkNewName = $med_for->checkIfOtherMedHaveSameName($database,$newNomMed);
+        if($checkNewName==true){
+            echo json_encode(["error"=>true,"message"=>"this name is already exist"]);
+
+        }else{
+            $updateData = $med_for->update_Med_for($database,$newNomMed,$newQteMed,$newPriceMed);
+            if($updateData == true){
+                echo json_encode(["error"=>false,"message"=>"the update was success"]);
+            }else{
+                echo json_encode(["error"=>true,"message"=>"somthing went wrong the update faild"]);
+            }
+        }
+    }else{ 
+        echo json_encode(["error"=>true,"message"=>"error in database"]);
+    }
+}
 
 
 ?>

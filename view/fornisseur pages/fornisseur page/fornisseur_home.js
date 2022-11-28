@@ -326,13 +326,25 @@ $(document).ready(function(){
         onNameChangeEdite()
         onNumberChangeEdite()
         onPriceChangeEdite()
-        onSelectEditeChange()
         if(nameValidEdite==true&numberValidEdite==true&priceValidEdite==true&selectValidEdite==true){
             var idmed= $("#edite_select option:selected").attr("idmed")
             var newNomMed = document.getElementById("medicient_name_edite").value 
             var newQteMed = document.getElementById("number_of_medicents_edite").value 
             var newPriceMed = document.getElementById("price_edite").value 
-            // ActiveSuccessPopUp("inputs are valide")
+            $.ajax({
+                type: "post",
+                url: "http://localhost/my-projects/school%20project/control/fornisseur_home_page_control.php",
+                data: {edite:"true",idmed : idmed,newNomMed:newNomMed,newQteMed:newQteMed,newPriceMed:newPriceMed},
+                dataType: "JSON",
+                success: function (response) {
+                    if(response.error == true){
+                        ActiveErrorPopUp(response.message)
+                    }else{
+                        ActiveSuccessPopUp(response.message)
+                        location.reload()
+                    }
+                }
+            });
         }else{
             var message = Object.values(editeErrorObject).filter((value)=>{
                 if(value.length>0){
