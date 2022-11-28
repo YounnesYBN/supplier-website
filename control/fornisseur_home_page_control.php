@@ -1,4 +1,5 @@
 <?php 
+include "./../module/medicaments.php";
 include "./../module/medicament_fornisseur.php";
 session_start();
 if(isset($_GET["checkAccess"])){
@@ -36,6 +37,22 @@ if(isset($_GET["get_info"])){
     $medCom = $for->convert_array_to_medComponent($MedForArray);
 
     echo json_encode(["username"=>$username,"email"=>$email,"deleteOption"=>$deletOption,"editeOption"=>$editeOption,"medCom"=>$medCom]);
+}
+if(isset($_POST['delete'])){
+    $id=$_POST['medIdDelete'];
+    $mede1= new Medicament("");
+    $db=$mede1->connect_db();
+    if($db!=false){
+        $delete=$mede1->delete_medic($db,$id);
+        if($delete="true"){
+            echo json_encode(["error"=>false,"message"=>"delete ok"]);
+        }else{
+            echo json_encode(["error"=>true,"message"=>"delete faild"]);
+        }
+        
+    }else{
+        echo json_encode(["error"=>true,"message"=>"error in database"]);
+    }
 }
 
 if(isset($_POST["edite"])){

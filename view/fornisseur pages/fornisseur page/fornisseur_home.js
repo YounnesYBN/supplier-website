@@ -211,6 +211,21 @@ $(document).ready(function(){
 
             if(selectValidDelete){
                 const medIdDelete =document.getElementById("delete_select").value
+                $.ajax({
+                    type:"post",
+                    url:"http://localhost/my-projects/school%20project/control/fornisseur_home_page_control.php",
+                    data:{delete:"true",medIdDelete:medIdDelete},
+                    dataType:"json",
+                    success : function(response){
+                    
+                        if(response.error==true){
+                            ActiveErrorPopUp(response.message)
+                            
+                        }else{
+                            ActiveSuccessPopUp(response.message);
+                        }
+                    }
+                })
                     
                 
                 // ActiveSuccessPopUp("-deleted successully")
