@@ -36,7 +36,7 @@ class Medicament_fornisseur
             $req->execute([$this->med_id, $this->for_id, $this->qte, $this->price]);
             return true;
         } catch (Exception $e) {
-            return $e;
+            return false;
         }
     }
     public function check_med_for_existe($database,$nomMed)

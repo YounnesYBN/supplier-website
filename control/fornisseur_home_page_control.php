@@ -81,5 +81,37 @@ if(isset($_POST["edite"])){
     }
 }
 
+if(isset($_POST["addMed"])){
+    $id_for = $_SESSION["id"];
+    $Medname = $_POST['name'];
+    $Mednumber = $_POST['number'];
+    $Medprice = $_POST['price'];
+    $medObj = new Medicament($Medname);
+    $db = $medObj->connect_db();
+    if($db != false){
+        $med_for_obj1 = new Medicament_fornisseur("",$id_for);
+        $checkIsExist = $med_for_obj1->check_med_for_existe($db,$Medname);
+        if($checkIsExist==true){
+            echo json_encode(["error"=>true,"message"=>"you already have this medicent"]);
+        }else{
+            $addMed = $medObj->add_midec($db);
+            if($addMed==true){
+                $newMedId = strval($medObj->get_id_medic($db));
+                $med_for_obj2 = new Medicament_fornisseur($newMedId,$id_for,$Mednumber,$Medprice);
+                $add_med_for = $med_for_obj2->add_med_for($db);
+                if($add_med_for ==true){
+                    echo json_encode(["error"=>false,"message"=>"medicent: ".$Medname." added successfully" ]);
+                }else{
+                    echo json_encode(["error"=>true,"message"=>"somthing went wrong"]);
+                }
+            }else{
+                echo json_encode(["error"=>true,"message"=>"somthing went wrong"]);
+            }
+        }
+    }else{
+        echo json_encode(["error"=>true,"message"=>"error in database"]); 
+    }
+}
+
 
 ?>

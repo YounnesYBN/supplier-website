@@ -21,7 +21,7 @@
     }
      public function add_midec($database){
         try{
-            $medic=$database->exec("INSERT INTO medicament(nom) values(' $this->nom')");
+            $medic=$database->exec("INSERT INTO medicament(nom) values('$this->nom')");
             return true ;
         }catch(Exception $e){
             return false ;
@@ -30,7 +30,7 @@
      }
      public function get_id_medic($database){
         try{
-            $req=$database->prepare(" SELECT id_med from medicament where nom=? ");
+            $req=$database->prepare("call get_id(?)");
             $req->execute([$this->nom]);
             $result = $req->fetch();
             return $result["id_med"];
@@ -50,6 +50,5 @@
         }
      }
 }
-
 
 ?>

@@ -171,9 +171,21 @@ $(document).ready(function(){
             var name = document.getElementById("medicient_name").value
             var number = document.getElementById("number_of_medicents").value
             var price = document.getElementById("price").value
-            
+            $.ajax({
+                type: "post",
+                url: "http://localhost/my-projects/school%20project/control/fornisseur_home_page_control.php",
+                data: {addMed : "true",name:name,number:number,price:price},
+                dataType: "JSON",
+                success: function (response) {
+                    if(response.error == true){
+                        ActiveErrorPopUp(response.message)
+                    }else{
+                        ActiveSuccessPopUp(response.message)
+                        location.reload()
+                    }
+                }
+            });            
 
-            ActiveSuccessPopUp("input are valide")
         }else{
            var message = Object.values(addErrorObject).filter((value)=>{
                 if(value.length>0){
