@@ -14,6 +14,7 @@ if(isset($_POST["login"])){
         $get_phar = $pharmaci->get_pharmaci($database);
         if($get_phar==true){
             $_SESSION["accessPass"] = "true";
+            $pharmaci->Set_info_session($database);
             echo json_encode(["error"=>false]);
         }else{
             echo json_encode(["error"=>true,"message"=>"login faild"]);

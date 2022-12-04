@@ -19,6 +19,7 @@ if(isset($_POST['singup'])){
             $add_pharmacie=$pharmacie->add_pharmaci($database);
             if($add_pharmacie==true ){
                 $_SESSION["accessPass"] = "true";
+                $pharmacie->Set_info_session($database);
                 echo json_encode(["error"=>false]);
             }else{
                 echo json_encode(["error"=>true,"message"=>"singup faild"]);

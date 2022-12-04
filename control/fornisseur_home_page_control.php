@@ -102,10 +102,10 @@ if(isset($_POST["addMed"])){
                 if($add_med_for ==true){
                     echo json_encode(["error"=>false,"message"=>"medicent: ".$Medname." added successfully" ]);
                 }else{
-                    echo json_encode(["error"=>true,"message"=>"somthing went wrong"]);
+                    echo json_encode(["error"=>true,"message"=>"somthing went wrong 1"]);
                 }
             }else{
-                echo json_encode(["error"=>true,"message"=>"somthing went wrong"]);
+                echo json_encode(["error"=>true,"message"=>"somthing went wrong 2"]);
             }
         }
     }else{

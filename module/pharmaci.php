@@ -69,6 +69,21 @@ class Pharmacie{
                     return false;
                 }
             }
+    public function Set_info_session($database){
+        $myreq=$database->prepare("SELECT * FROM  pharmaci where email=?");
+        $myreq->execute(array(
+            $this->email
+        ));
+        if($info=$myreq->fetch()){
+            $id = $info["id_par"];
+            $email = $info["email"];
+            $username = $info["intitul"];
+            $_SESSION["id"] = $id;
+            $_SESSION["email"] = $email;
+            $_SESSION["username"] = $username;
+            
+        }
+    }
    
     
 }
