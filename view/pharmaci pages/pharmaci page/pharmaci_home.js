@@ -36,4 +36,25 @@ $(document).ready(function () {
         });
     })
     //exite button
+    //for filter_popup start
+    $("#filter_button").click(()=>{
+        $("#filter_popup").fadeIn()
+    })
+    $("#filter_popup_con").click((e)=>{
+        e.stopPropagation()
+    })
+    $("#filter_popup").click(()=>{
+        $("#filter_popup").fadeOut()
+    })
+
+    //for filter_popup end
+
+    //for search popup start
+    $("#search_med").click(()=>{
+        $("#search_popup").fadeIn()
+    })
+    $("#cancel").click(()=>{
+        $("#search_popup").fadeOut()
+    })
+    //for search popup end
 });

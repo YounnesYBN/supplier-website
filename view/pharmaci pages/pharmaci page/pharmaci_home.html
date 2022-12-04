@@ -9,7 +9,53 @@
     <script src="./../../../jquery-3.6.1.min.js"></script>
 </head>
 <body>
-    
+    <!-- filter popup strat -->
+    <div id="filter_popup" style="display: none;">
+        <div id="filter_popup_con">
+            <div id="price_filter">
+                <h3>Set Price</h3>
+                <div id="price_range">
+                    <input type="number" placeholder="MIN" id="PriceLess">
+                    <h4>Between</h4>
+                    <input type="number" placeholder="MAX"id="PriceGrater">
+                </div>
+            </div>
+            <div id="underline_filter"></div>
+            <div id="qte_filter">
+                <h3>Set how much</h3>
+                <div id="qte_range">
+                    <input type="number" placeholder="MIN" id="QteLess">
+                    <h4>Between</h4>
+                    <input type="number" placeholder="MAX"id="QteGrater">
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- filter popup end -->
+    <!-- search popup start -->
+    <div id="search_popup" style="display: none;">
+        <div id="search_popup_con">
+            <div id="search_filter_con">
+                <div id="search_con">
+                    <input type="text" id="search_bar" placeholder="Search"><button id="search_button"><img src="./search.png" alt="" width="23px" ></button>
+                </div>
+                
+                    <button id="filter_button">
+                        Filter <img src="./filter.png" alt="" srcset="">
+                    </button>
+            </div>
+            <div id="show_result">
+
+            </div>
+            <div id="exite_con">
+                <button id="cancel">Cancel</button>
+            </div>
+            
+        </div>
+
+    </div>
+    <!-- search popup end -->
     <header>
         <div id="user_info_con">
             <div id="username_email_con">
@@ -81,7 +127,7 @@
                     </div>
                 </div>
                 <div id="all_buttons">
-                    <button id="add_med">search for medicent</button>
+                    <button id="search_med">search for medicent</button>
                 </div>
                 
             </div>
