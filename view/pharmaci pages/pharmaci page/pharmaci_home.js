@@ -36,6 +36,12 @@ $(document).ready(function () {
         });
     })
     //exite button
+    //order popup start
+    $("#exite_order_popup").click((e)=>{
+        e.stopPropagation()
+        $("#order_popup").fadeOut()
+    })
+    //order popup end
     //for filter_popup start
     $("#filter_button").click(()=>{
         $("#filter_popup").fadeIn()

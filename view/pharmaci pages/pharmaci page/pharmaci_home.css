@@ -6,7 +6,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand&family=Source+Sans+Pro:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@300&family=Quicksand&family=Source+Sans+Pro:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@300&family=Great+Vibes&family=Quicksand&family=Source+Sans+Pro:wght@300&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@1,500&display=swap');
 *{
     margin: 0;
     padding: 0;
@@ -95,6 +95,173 @@ background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(29,253,43,1) 100%
 
 }
 /*end of popup style*/
+/* start order popup style  */
+#order_popup{
+  position: absolute;
+  z-index:1;
+  background-color: rgba(138, 139, 137, 0.404);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#order_popup_con{
+  background-color: white;
+  width: 40%;
+  height: 60%;
+  border-radius: 5px;
+}
+#med_name_con{
+  width: 100%;
+  height: 18%;
+  padding: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10%;
+}
+#ordered_med_name{
+  font-family: 'Fira Sans', sans-serif;
+}
+#order_popup_underline{
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px; 
+  width: 80%;
+  height: 15%;
+  border-radius: 15px;
+  background: rgb(2,0,36);
+background: linear-gradient(4deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+}
+#range_total_con{
+  width: 100%;
+  height: 70%;
+  display: flex;
+}
+#range_con{
+  width: 55%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#set_qte{
+  position: relative;
+  width: 48%;
+  transform: rotateZ(-90deg);
+}
+#set_qte::before{
+  content: attr(min);
+  position: absolute;
+  transform: rotateZ(90deg);
+  left: -23%;
+  bottom: -41%;
+  border-radius: 50px;
+  font-size: 20px;
+  background-color: #0075ff;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+#set_qte::after{
+  content: attr(max);
+  position: absolute;
+  transform: rotateZ(90deg);
+  left: 103%;
+    bottom: -31%;
+  border-radius: 50px;
+  font-size: 15px;
+  background-color: #0075ff;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+#qte_val{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 30%;
+  border-radius: 5px;
+  max-width:fit-content;
+  height: 20%;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+#order_total_con{
+  width: 40%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+#order_total{
+  font-size: 50px;
+  font-style: italic;
+}
+
+#order_popup_buttons{
+  width: 100%;
+  height: 12%;
+  padding: 0 2% 0 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 5%;
+}
+#order_popup_buttons button{
+  width: 20%;
+  height: 60%;
+  outline: none;
+  font-size: 15px;
+}
+#add_order{
+  background-color: #06D6A0;
+  color:white;
+  border-radius: 5px;
+  font-size: 15px;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+  transition: 200ms;
+  border:1px solid #06D6A0;
+
+}
+#add_order:hover{
+  background-color: white;
+  color:#06D6A0;
+  border:1px solid #06D6A0;
+  transform: translateY(-5px);
+}
+#add_order:active{
+  transform: translateY(0px);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+#exite_order_popup{
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+  background-color: white;
+  color: #f40d3c;
+  border: 1px solid #f40d3c;
+  border-radius: 5px;
+  transition: 200ms;
+}
+#exite_order_popup:hover{
+  background-color: #f40d3c;
+  color: white;
+  transform: translateY(-5px);
+  
+}
+#exite_order_popup:active{
+  transform: translateY(0px);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+/* end order popup style  */
 /*filter popup start*/
 #filter_popup{
   width: 100%;
