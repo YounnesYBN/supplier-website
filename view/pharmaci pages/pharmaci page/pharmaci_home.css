@@ -2,6 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@1,500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&family=Source+Sans+Pro:wght@300&display=swap');
 
 *{
     margin: 0;
@@ -160,7 +162,7 @@ box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 
   flex-direction: column;
   align-items: center;
   padding: 10px;
-  width: 50%;
+  width: 60%;
   min-height: 20%;
   max-height: fit-content;
   background: white;
@@ -254,9 +256,9 @@ box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 
 }
 
 #show_result{
-  padding: 7px;
+  padding-top: 5%;
   width: 88%;
-  min-height: 50px;
+  min-height: 60px;
   max-height:  450px;
   overflow:auto;
   box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
@@ -264,9 +266,145 @@ box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 
   
 
 }
-#show_result ::-webkit-scrollbar{
-  display: none;
+#show_result::-webkit-scrollbar{
+  appearance: none;
 }
+#med{
+  margin:0 0 4% 9.5%  ;
+  display: flex;
+  transition: 200ms;
+  width: 80%;
+  height: 120px;
+  border-radius: 5px;
+  padding: 10px 0 0 10px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+#info{
+  width: 70%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items:flex-start;
+  justify-content: space-between;
+}
+#for_name{
+  width: 45%;
+  color: #e9ecef;
+  min-height: 30%;
+  max-height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  border-radius: 5px;
+  background-color:#293241 ;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+#med_info{
+  width: 100%;
+  height: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#med_price,#med_qte {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  height: 50%;
+  gap: 10px;
+  border-radius: 50px;
+  color: #e9ecef;
+  background-color: #293241;
+}
+#med_name {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  min-width: 40%;
+  max-height: 55%;
+  flex-wrap: wrap;
+  height: 50%;
+  gap: 10px;
+  border-radius: 50px;
+  color: #e9ecef;
+  background-color: #293241;
+}
+#med_info div h4{
+  font-family: 'Quicksand', sans-serif;
+font-family: 'Source Sans Pro', sans-serif;
+}
+
+#for_name h3{
+  font-family: 'Quicksand', sans-serif;
+  font-style: italic;
+  color: white;
+}
+#med:hover{
+  transform: translateY(-5px) translateX(-5px);
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+#command_con{
+  width: 30%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
+#add_command {
+width: 50%;
+height: 40%;
+appearance: none;
+background-color:#80ED99;
+border: 2px solid #80ED99;
+border-radius: 15px;
+box-sizing: border-box;
+color: #FFFFFF;
+cursor: pointer;
+display: inline-block;
+font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+font-size: 16px;
+font-weight: 600;
+line-height: normal;
+margin: 0;
+outline: none;
+text-align: center;
+text-decoration: none;
+transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+user-select: none;
+-webkit-user-select: none;
+touch-action: manipulation;
+will-change: transform;
+}
+
+#add_command:disabled {
+pointer-events: none;
+}
+
+#add_command:hover {
+  width: 55%;
+  height: 40%;
+box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+transform: translateY(-2px);
+background-color: white;
+color: #80ED99;
+border-color: #80ED99;
+
+}
+
+#add_command:active {
+box-shadow: none;
+transform: translateY(0);
+}
+
 
 #exite_con{
   width: 100%;
@@ -507,6 +645,7 @@ background-image: linear-gradient(270deg, #A9C9FF 0%, #FFBBEC 100%);
   background-color:#8d99ae79;
   
 }
+/* 
 #med{
   background-color: white;
   flex-wrap: wrap;
@@ -530,7 +669,7 @@ background-image: linear-gradient(270deg, #A9C9FF 0%, #FFBBEC 100%);
 #med div h3{
   font-family: 'Roboto Slab', serif;
   color:#091540;
-}
+} */
 
 
   #operation_con{
