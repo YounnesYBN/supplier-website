@@ -57,4 +57,28 @@ $(document).ready(function () {
         $("#search_popup").fadeOut()
     })
     //for search popup end
+    //succes error popup
+
+    $("#error_popup_child").click(function(e){
+        e.stopPropagation()
+        
+    })
+    $("#success_popup_child").click(function(e){
+        e.stopPropagation()
+        
+    })
+
+    $(document).click(function (e) { 
+        $("#error_popup").fadeOut(500);
+        $("#success_popup").fadeOut(500);
+    });
+    function ActiveErrorPopUp(message){
+        document.getElementById("error_message_pop").innerHTML= message
+        $("#error_popup").fadeIn(500); 
+    }
+    function ActiveSuccessPopUp(message){
+        document.getElementById("success_message_pop").innerHTML= message
+        $("#success_popup").fadeIn(500); 
+    }
+    //succes error popup
 });
