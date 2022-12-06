@@ -2,10 +2,11 @@ $(document).ready(function () {
     var priceOfOrderdMed = 0;
     var Total = 0;
     var IsFilterActive = false ;
-    var PriceBetween = {min:{val:0,error:false},max:{val:0,error:false},valid:false};
-    var QteBetween = {min:{val:0,error:false},max:{val:0,error:false},valid:false};
+    var PriceBetween = {min:{val:0,error:false},max:{val:0,error:false},valid:true};
+    var QteBetween = {min:{val:0,error:false},max:{val:0,error:false},valid:true};
     var PriceFilter = {min:0,max:0,isActive:false,status:""}
     var QteFilter = {min:0,max:0,isActive:false,status:""}
+    var searchValid = true;
     //check Access
     $.ajax({
         type: "get",
@@ -242,11 +243,51 @@ $(document).ready(function () {
     //for filter_popup end
 
     //for search popup start
+    function onSearchBarChange(){
+        var ele = document.getElementById("search_bar")
+        var Searchvalue = ele.value
+        var check1 = /^[a-zA-Z]{0,}$/
+        var check2 = Searchvalue.length>0
+        if(check1.test(Searchvalue)==true && check2==true){
+            ele.style.borderColor = "#8EC5FC"
+            searchValid = true
+        }else{
+            ele.style.borderColor = "#f40d3c"
+            searchValid =false 
+        }
+    }
     $("#search_med").click(()=>{
         $("#search_popup").fadeIn()
     })
     $("#cancel").click(()=>{
         $("#search_popup").fadeOut()
+    })
+    $("#search_bar").keyup(function (e) { 
+        onSearchBarChange()
+    });
+    $("#search_button").click((e)=>{
+        e.stopPropagation()
+        var message = []
+        var isErrorEX = false
+        onSearchBarChange()
+        if(searchValid==false){
+            message.push("-search value is unvalid")
+            isErrorEX = true
+        }
+        if(PriceBetween.valid==false){
+            message.push("-price filter is unvalid")
+            isErrorEX = true
+        }
+        if(QteBetween.valid==false){
+            message.push("-Qte filter is unvalid ")
+            isErrorEX = true
+        }
+
+        if(isErrorEX == true){
+            ActiveErrorPopUp(message.join("<br>"))
+        }
+        
+
     })
     //for search popup end
     //succes error popup

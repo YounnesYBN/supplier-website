@@ -475,6 +475,13 @@ box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 
   transform: translateX(5px);
   border-radius: 3.5px;
 }
+#search_button:hover{
+  transform: translateY(-5px);
+}
+#search_button:active{
+  transform: translateY(0px);
+}
+
 
 #filter_button{
   display: flex;
