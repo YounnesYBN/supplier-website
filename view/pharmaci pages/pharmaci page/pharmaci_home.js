@@ -2,8 +2,8 @@ $(document).ready(function () {
     var priceOfOrderdMed = 0;
     var Total = 0;
     var IsFilterActive = false ;
-    var PriceBetween = {min:0,max:0,error:false};
-    var QteBetween = {min:0,max:0,error:false};
+    var PriceBetween = {min:{val:0,error:false},max:{val:0,error:false},valid:false};
+    var QteBetween = {min:{val:0,error:false},max:{val:0,error:false},valid:false};
     //check Access
     $.ajax({
         type: "get",
@@ -101,39 +101,91 @@ $(document).ready(function () {
     $("#filter_popup").click(()=>{
         $("#filter_popup").fadeOut()
     })
-
-    // $("#PriceLess").change((e)=>{
-    //     var PriceLessVal = e.target.value
-    //     var check1 = /^[0-9]$/
-    //     console.log(check1.test(PriceLessVal))
-    //     if(check1.test(PriceLessVal)==true){
-    //         PriceBetween.min = PriceLessVal
-    //         PriceBetween.error = false
-    //         e.target.style.backgroundColor = "#8EC5FC"
-    //     }else{
-    //         PriceBetween.min = 0
-    //         PriceBetween.error = true
-    //         e.target.style.backgroundColor = "#f40d3c"
-    //     }
-    //     console.log(PriceBetween)
-    // })
-
-    // $("#PriceGrater").change((e)=>{
-    //     var PriceGrateVal = e.target.value
-    //     var check1 = /^[0-9]$/
-    //     console.log(check1.test(PriceGrateVal))
-    //     if(check1.test(PriceGrateVal)==true){
-    //         PriceBetween.max = PriceGrateVal
-    //         PriceBetween.error = false
-    //         e.target.style.backgroundColor = "#8EC5FC"
-    //     }else{
-    //         PriceBetween.max = 0
-    //         PriceBetween.error = true
-    //         e.target.style.backgroundColor = "#f40d3c"
-    //     }
-    //     console.log(PriceBetween)
-    // })
+    function onPriceGrateChange(){
+        var ele = document.getElementById("PriceGrater")
+        var PriceGrateVal = parseInt(ele.value)
+        var check1 = /^[0-9]{0,}$/
+        var check2 = PriceGrateVal >= PriceBetween.min.val 
+        if(check1.test(PriceGrateVal)==true && check2 == true){
+            PriceBetween.max.val = PriceGrateVal
+            PriceBetween.max.error = false
+            ele.style.backgroundColor = "#8EC5FC"
+        }else{
+            PriceBetween.max.val = 0
+            PriceBetween.max.error = true
+            ele.style.backgroundColor = "#f40d3c"
+        }
+    }
     
+    function onPriceLessChange(){
+        var ele = document.getElementById("PriceLess")
+        var PriceLessVal = parseInt(ele.value)
+        var check1 = /^[0-9]{0,}$/
+        var check2 = PriceLessVal <= PriceBetween.max.val
+        if(check1.test(PriceLessVal)==true & check2==true){
+            PriceBetween.min.val = PriceLessVal
+            PriceBetween.min.error = false
+            ele.style.backgroundColor = "#8EC5FC"
+        }else{
+            PriceBetween.min.val = 0
+            PriceBetween.min.error = true
+            ele.style.backgroundColor = "#f40d3c"
+        }
+        
+    }
+    function onQteGrateChange(){
+        var ele = document.getElementById("QteGrater")
+        var PriceGrateVal = parseInt(ele.value)
+        var check1 = /^[0-9]{0,}$/
+        var check2 = PriceGrateVal >= QteBetween.min.val 
+        if(check1.test(PriceGrateVal)==true && check2 == true){
+            QteBetween.max.val = PriceGrateVal
+            QteBetween.max.error = false
+            ele.style.backgroundColor = "#8EC5FC"
+        }else{
+            QteBetween.max.val = 0
+            QteBetween.max.error = true
+            ele.style.backgroundColor = "#f40d3c"
+        }
+    }
+    
+    function onQteLessChange(){
+        var ele = document.getElementById("QteLess")
+        var PriceLessVal = parseInt(ele.value)
+        var check1 = /^[0-9]{0,}$/
+        var check2 = PriceLessVal <= QteBetween.max.val
+        if(check1.test(PriceLessVal)==true & check2==true){
+            QteBetween.min.val = PriceLessVal
+            QteBetween.min.error = false
+            ele.style.backgroundColor = "#8EC5FC"
+        }else{
+            QteBetween.min.val = 0
+            QteBetween.min.error = true
+            ele.style.backgroundColor = "#f40d3c"
+        }
+        
+    }
+
+    $("#PriceLess").change((e)=>{
+        onPriceLessChange()
+        onPriceGrateChange()
+        console.log(PriceBetween)
+    })
+
+    $("#PriceGrater").change((e)=>{
+        onPriceGrateChange()
+        onPriceLessChange()
+        console.log(PriceBetween)
+
+    })
+    $("#QteGrater").change(()=>{
+        onQteGrateChange()
+        onQteLessChange()
+    })
+    $("#QteLess").change(()=>{
+        onQteLessChange()
+        onQteGrateChange()
+    })
     //for filter_popup end
 
     //for search popup start
