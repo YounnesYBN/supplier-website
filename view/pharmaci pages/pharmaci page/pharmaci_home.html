@@ -39,7 +39,7 @@
   </div>
   <!-- end of success popup -->
   <!-- start command popup -->
-    <div id="order_popup">
+    <div id="order_popup" style="display: none;">
         <div id="order_popup_con">
             <div id="med_name_con">
                 <h1 id="ordered_med_name"></h1>
@@ -47,16 +47,16 @@
             </div>
             <div id="range_total_con">
                 <div id="range_con">
-                    <input type="range" id="set_qte" min="0" max="100">
-                    <h2 id="qte_val"></h2>
+                    <input type="range" id="set_qte" min="1" max="">
+                    <h2 id="qte_val">0</h2>
                 </div>
                 
                 <div id="order_total_con">
-                    <h1 id="order_total"></h1><img src="./total.png" alt="">
+                    <h1 id="order_total">0</h1><img src="./total.png" alt="">
                 </div>
             </div>
             <div id="order_popup_buttons">
-                <button id="add_order">Order</button>
+                <button id="add_order" ordered_id_med="" ordered_id_for="">Order</button>
                 <button id="exite_order_popup">cancel</button>
             </div>
         </div>
@@ -99,7 +99,7 @@
                     </button>
             </div>
             <div id="show_result">
-                <!-- <div id="med">
+                <div class="med">
                     <div id="info">
                       <div id="for_name">
                             <img src="./Whiteuser.png" alt="" width="21px"><h3>Younnes</h3>
@@ -111,9 +111,9 @@
                       </div>
                     </div>
                     <div id="command_con">
-                        <button id="add_command">ADD</button>
+                        <button id="add_command" id_for="1" id_med="1" qte="300" price="200" med_name="Dolipran">ADD</button>
                     </div>
-                </div> -->
+                </div>
                 
             </div>
             <div id="exite_con">
@@ -151,7 +151,7 @@
                 <div id="commande_display">
                     <div id="display_con">
                         <div id="display">
-                            <!-- <div class="order_con">
+                            <div class="order_con">
                                 <div id="order_info">
                                     <div>
                                         <h2 class="lable">Suplaire:</h2>
@@ -172,9 +172,9 @@
                                         <h1 id="totla">200</h1>
                                         <img src="./total.png" alt="" width="30px">
                                     </div>
-                                    <button id="cancelOrd_button">Cancel Order</button>
+                                    <button id="cancelOrd_button" id_command="100">Cancel Order</button>
                                 </div>
-                            </div> -->
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -187,7 +187,7 @@
                 <div id="commande_display">
                     <div id="display_con">
                         <div id="display">
-                            <!-- <div class="order_con">
+                            <div class="order_con">
                                 <div id="order_info">
                                     <div>
                                         <h2 class="lable">Suplaire:</h2>
@@ -208,9 +208,9 @@
                                         <h1 id="totla">200</h1>
                                         <img src="./total.png" alt="" width="30px">
                                     </div>
-                                    <button id="DeleteOrd_button">Delete</button>
+                                    <button id="DeleteOrd_button" id_command="1">Delete</button>
                                 </div>
-                            </div>      -->
+                            </div>     
                         </div>
                     </div>
                 </div>
@@ -223,7 +223,7 @@
                 <div id="commande_display">
                     <div id="display_con">
                         <div id="display">
-                            <!-- <div class="order_con">
+                            <div class="order_con">
                                 <div id="order_info">
                                     <div>
                                         <h2 class="lable">Suplaire:</h2>
@@ -244,9 +244,9 @@
                                         <h1 id="totla">200</h1>
                                         <img src="./total.png" alt="" width="30px">
                                     </div>
-                                    <button id="Delete_canceled_button">Delete</button>
+                                    <button id="Delete_canceled_button" id_command="1">Delete</button>
                                 </div>
-                            </div>  -->
+                            </div>
                         </div>
                     </div>
                 </div>
