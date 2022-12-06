@@ -4,6 +4,8 @@ $(document).ready(function () {
     var IsFilterActive = false ;
     var PriceBetween = {min:{val:0,error:false},max:{val:0,error:false},valid:false};
     var QteBetween = {min:{val:0,error:false},max:{val:0,error:false},valid:false};
+    var PriceFilter = {min:0,max:0,isActive:false,status:""}
+    var QteFilter = {min:0,max:0,isActive:false,status:""}
     //check Access
     $.ajax({
         type: "get",
@@ -100,7 +102,57 @@ $(document).ready(function () {
     })
     $("#filter_popup").click(()=>{
         $("#filter_popup").fadeOut()
+        setFilterPrice()
+        setQteFilter()
     })
+    function setFilterPrice(){
+        const {valid,max,min} = PriceBetween ;
+        console.log(valid)
+        if(valid==true){
+            if(min.val!=max.val){
+                PriceFilter.status="Nequal"
+                PriceFilter.max = max.val
+                PriceFilter.min = min.val
+                PriceFilter.isActive=true
+            }else{
+                if(max.val!=0 & min.val!=0){
+                    PriceFilter.status="equal"
+                    PriceFilter.max = max.val
+                    PriceFilter.min = min.val
+                    PriceFilter.isActive=true
+                }else{
+                    PriceFilter.isActive=false
+                }
+            }
+        }else{
+            PriceFilter.isActive=false
+        }
+        console.log(PriceFilter)
+    }
+    function setQteFilter(){
+        const {valid,max,min} = QteBetween ;
+        console.log(valid)
+        if(valid==true){
+            if(min.val!=max.val){
+                QteFilter.status="Nequal"
+                QteFilter.max = max.val
+                QteFilter.min = min.val
+                QteFilter.isActive=true
+            }else{
+                if(max.val!=0 & min.val!=0){
+                    QteFilter.status="equal"
+                    QteFilter.max = max.val
+                    QteFilter.min = min.val
+                    QteFilter.isActive=true
+                }else{
+                    QteFilter.isActive=false
+                }
+            }
+        }else{
+            QteFilter.isActive=false
+        }
+        console.log(QteFilter)
+    }
     function onPriceGrateChange(){
         var ele = document.getElementById("PriceGrater")
         var PriceGrateVal = parseInt(ele.value)
@@ -169,22 +221,23 @@ $(document).ready(function () {
     $("#PriceLess").change((e)=>{
         onPriceLessChange()
         onPriceGrateChange()
-        console.log(PriceBetween)
+        PriceBetween.valid = PriceBetween.max.error==false&&PriceBetween.min.error==false?true:false;
     })
 
     $("#PriceGrater").change((e)=>{
         onPriceGrateChange()
         onPriceLessChange()
-        console.log(PriceBetween)
-
+        PriceBetween.valid = PriceBetween.max.error==false&&PriceBetween.min.error==false?true:false;
     })
     $("#QteGrater").change(()=>{
         onQteGrateChange()
         onQteLessChange()
+        QteBetween.valid = QteBetween.max.error==false&& QteBetween.min.error==false?true:false;
     })
     $("#QteLess").change(()=>{
         onQteLessChange()
         onQteGrateChange()
+        QteBetween.valid = QteBetween.max.error==false&& QteBetween.min.error==false?true:false;
     })
     //for filter_popup end
 
