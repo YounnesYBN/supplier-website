@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    var AllData = []
     var priceOfOrderdMed = 0;
     var Total = 0;
     var IsFilterActive = false ;
@@ -33,7 +34,6 @@ $(document).ready(function () {
         
     }
 
-    var AllData = []
     
     searchwayAllWays()
     //check Access
