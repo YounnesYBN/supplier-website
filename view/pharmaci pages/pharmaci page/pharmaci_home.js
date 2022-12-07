@@ -8,25 +8,17 @@ $(document).ready(function () {
     var QteFilter = {min:0,max:0,isActive:false,status:""}
     var searchValid = true;
     var SearchValidValue = "";
+    var searchWay = "allData"
+    var AllData = [
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+    ]
     
-    // allData.map((element)=>{
-    //     document.getElementById("show_result").innerHTML += `
-    //     <div class="med">
-    //         <div id="info">
-    //           <div id="for_name">
-    //                 <img src="./Whiteuser.png" alt="" width="21px"><h3>${element.for_name}</h3>
-    //           </div>
-    //           <div id="med_info">
-    //             <div id="med_name"><img src="./Whitepill.png" alt="" width="20px"><h4>${element.med_name}</h4></div>
-    //             <div id="med_qte"><img src="./Whitestore.png" alt="" width="20px"> <h4>${element.qte}</h4></div>
-    //             <div id="med_price"><img src="./Whiteprice.png" alt="" width="20px"><h4>${element.price}</h4></div>
-    //           </div>
-    //         </div>
-    //         <div id="command_con">
-    //             <button class="add_command" id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
-    //         </div>
-    //     </div>`
-    // })
+    
     //check Access
     $.ajax({
         type: "get",
@@ -265,6 +257,75 @@ $(document).ready(function () {
     //for filter_popup end
 
     //for search popup start
+    function searchwaySearch(){
+        var resultCon = document.getElementById("#show_result")
+        resultCon.innerHTML = ""
+        AllData.map((element)=>{
+            resultCon.innerHTML += `
+            <div class="med">
+                <div id="info">
+                  <div id="for_name">
+                        <img src="./Whiteuser.png" alt="" width="21px"><h3>${element.for_name}</h3>
+                  </div>
+                  <div id="med_info">
+                    <div id="med_name"><img src="./Whitepill.png" alt="" width="20px"><h4>${element.med_name}</h4></div>
+                    <div id="med_qte"><img src="./Whitestore.png" alt="" width="20px"> <h4>${element.qte}</h4></div>
+                    <div id="med_price"><img src="./Whiteprice.png" alt="" width="20px"><h4>${element.price}</h4></div>
+                  </div>
+                </div>
+                <div id="command_con">
+                    <button class="add_command" id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
+                </div>
+            </div>`
+        })
+    }
+    function searchwayQte(){
+        var resultCon = document.getElementById("#show_result")
+        resultCon.innerHTML = ""
+        AllData.map((element)=>{
+            resultCon.innerHTML += `
+            <div class="med">
+                <div id="info">
+                  <div id="for_name">
+                        <img src="./Whiteuser.png" alt="" width="21px"><h3>${element.for_name}</h3>
+                  </div>
+                  <div id="med_info">
+                    <div id="med_name"><img src="./Whitepill.png" alt="" width="20px"><h4>${element.med_name}</h4></div>
+                    <div id="med_qte"><img src="./Whitestore.png" alt="" width="20px"> <h4>${element.qte}</h4></div>
+                    <div id="med_price"><img src="./Whiteprice.png" alt="" width="20px"><h4>${element.price}</h4></div>
+                  </div>
+                </div>
+                <div id="command_con">
+                    <button class="add_command" id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
+                </div>
+            </div>`
+        })
+    }
+
+    function FindSearchWay(){
+        var searchFinalValid = searchValid==true && SearchValidValue.length>0 ?true:false;
+        if(searchFinalValid==true&&PriceFilter.isActive==true&&QteFilter.isActive==true){
+            searchWay = "search&price&qte"
+        }else{
+            if(searchFinalValid==true&&PriceFilter.isActive==true){
+                searchWay = "search&price"
+            }else if(searchFinalValid==true&&QteFilter.isActive==true) {
+                searchWay = "search&qte"
+            }else if(PriceFilter.isActive==true&&QteFilter.isActive==true){
+                searchWay = "price&qte"
+            }else{
+                if(searchFinalValid == true){
+                    searchWay = "search"
+                }
+                else if(QteFilter.isActive==true){
+                    searchWay = "qte"
+                }else if(PriceFilter.isActive==true){
+                    searchWay = "price"
+                }
+            }
+        }
+    }
+
     function onSearchBarChange(){
         var ele = document.getElementById("search_bar")
         var Searchvalue = ele.value
@@ -309,6 +370,7 @@ $(document).ready(function () {
         if(isErrorEX == true){
             ActiveErrorPopUp(message.join("<br>"))
         }
+        FindSearchWay()
         
 
     })
