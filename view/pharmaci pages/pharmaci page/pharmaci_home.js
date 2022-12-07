@@ -33,36 +33,7 @@ $(document).ready(function () {
         
     }
 
-    var AllData = [{id_med:1,id_for:1,med_name:"Benson",for_name:"Benjamen",qte:61,price:60},
-    {id_med:2,id_for:2,med_name:"Broderick",for_name:"Weston",qte:98,price:98},
-    {id_med:3,id_for:3,med_name:"Dalli",for_name:"Padraig",qte:7,price:85},
-    {id_med:4,id_for:4,med_name:"Preston",for_name:"Bradley",qte:75,price:45},
-    {id_med:5,id_for:5,med_name:"Silvio",for_name:"Cirstoforo",qte:29,price:49},
-    {id_med:6,id_for:6,med_name:"Llewellyn",for_name:"Matthieu",qte:9,price:77},
-    {id_med:7,id_for:7,med_name:"Jamey",for_name:"Brendin",qte:77,price:83},
-    {id_med:8,id_for:8,med_name:"Hunter",for_name:"Aylmar",qte:87,price:89},
-    {id_med:9,id_for:9,med_name:"Gar",for_name:"Alyosha",qte:68,price:59},
-    {id_med:10,id_for:10,med_name:"Otho",for_name:"Alfons",qte:86,price:48},
-    {id_med:11,id_for:11,med_name:"Gaven",for_name:"Monty",qte:43,price:23},
-    {id_med:12,id_for:12,med_name:"Thayne",for_name:"Ruby",qte:58,price:9},
-    {id_med:13,id_for:13,med_name:"Jayson",for_name:"Rockey",qte:90,price:5},
-    {id_med:14,id_for:14,med_name:"Barnebas",for_name:"Mano",qte:13,price:41},
-    {id_med:15,id_for:15,med_name:"Nilson",for_name:"Far",qte:79,price:4},
-    {id_med:16,id_for:16,med_name:"Alley",for_name:"Hilton",qte:24,price:28},
-    {id_med:17,id_for:17,med_name:"Hallsy",for_name:"Westley",qte:9,price:48},
-    {id_med:18,id_for:18,med_name:"Meade",for_name:"Brennen",qte:94,price:35},
-    {id_med:19,id_for:19,med_name:"Antoine",for_name:"Brooks",qte:97,price:30},
-    {id_med:20,id_for:20,med_name:"Arthur",for_name:"Flynn",qte:85,price:33},
-    {id_med:21,id_for:21,med_name:"Hilary",for_name:"Erik",qte:93,price:36},
-    {id_med:22,id_for:22,med_name:"Boonie",for_name:"Glyn",qte:86,price:79},
-    {id_med:23,id_for:23,med_name:"Reagen",for_name:"Alfons",qte:8,price:89},
-    {id_med:24,id_for:24,med_name:"Winnie",for_name:"Marten",qte:32,price:21},
-    {id_med:25,id_for:25,med_name:"Ulises",for_name:"Hazel",qte:81,price:95},
-    {id_med:26,id_for:26,med_name:"Upton",for_name:"Boonie",qte:41,price:15},
-    {id_med:27,id_for:27,med_name:"Flint",for_name:"Norris",qte:39,price:37},
-    {id_med:28,id_for:28,med_name:"Ruprecht",for_name:"Glyn",qte:10,price:45},
-    {id_med:29,id_for:29,med_name:"Marvin",for_name:"Larry",qte:56,price:61},
-    {id_med:30,id_for:30,med_name:"Shaun",for_name:"Freeland",qte:64,price:99}]
+    var AllData = []
     
     searchwayAllWays()
     //check Access
