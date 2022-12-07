@@ -19,6 +19,20 @@ $(document).ready(function () {
         {way:"search&price",method : searchwaySearchPrice},
         {way:"search&price&qte",method : searchwaySearchPriceQte}
     ]
+    function onCommandButtonClick(e){
+        e.stopPropagation()
+        $("#order_popup").fadeIn()
+        var ele = e.target
+        var med_name = ele.getAttribute("med_name")
+        var med_qte =  ele.getAttribute("qte")
+        var med_price = ele.getAttribute("price")
+        var id_med =  ele.getAttribute("id_med")
+        var id_for =  ele.getAttribute("id_for")
+
+        SetValuesForOrderPopup(id_med,id_for,med_name,med_qte,med_price)
+        
+    }
+
     var AllData = [{id_med:1,id_for:1,med_name:"Benson",for_name:"Benjamen",qte:61,price:60},
     {id_med:2,id_for:2,med_name:"Broderick",for_name:"Weston",qte:98,price:98},
     {id_med:3,id_for:3,med_name:"Dalli",for_name:"Padraig",qte:7,price:85},
@@ -106,16 +120,7 @@ $(document).ready(function () {
 
     }    
     $(".add_command").click((e)=>{
-        e.stopPropagation()
-        $("#order_popup").fadeIn()
-        var ele = e.target
-        var med_name = ele.getAttribute("med_name")
-        var med_qte =  ele.getAttribute("qte")
-        var med_price = ele.getAttribute("price")
-        var id_med =  ele.getAttribute("id_med")
-        var id_for =  ele.getAttribute("id_for")
-
-        SetValuesForOrderPopup(id_med,id_for,med_name,med_qte,med_price)
+        onCommandButtonClick(e)
     })
 
     $("#exite_order_popup").click((e)=>{
@@ -306,10 +311,13 @@ $(document).ready(function () {
                       </div>
                     </div>
                     <div id="command_con">
-                        <button class="add_command" id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
+                        <button class="add_command"  id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
                     </div>
                 </div>`
             }
+        })
+        $(".add_command").click((e)=>{
+            onCommandButtonClick(e)
         })
     }
     function searchwayAllWays(){
@@ -329,10 +337,13 @@ $(document).ready(function () {
                       </div>
                     </div>
                     <div id="command_con">
-                        <button class="add_command" id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
+                        <button class="add_command"  id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
                     </div>
                 </div>`
             
+        })
+        $(".add_command").click((e)=>{
+            onCommandButtonClick(e)
         }) 
     }
     function searchwayQte(){
@@ -359,7 +370,7 @@ $(document).ready(function () {
                               </div>
                             </div>
                             <div id="command_con">
-                                <button class="add_command" id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
+                                <button class="add_command"  id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
                             </div>
                         </div>`
                     }
@@ -381,12 +392,15 @@ $(document).ready(function () {
                               </div>
                             </div>
                             <div id="command_con">
-                                <button class="add_command" id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
+                                <button class="add_command"  id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
                             </div>
                         </div>`
                     }
                 })
             }
+            $(".add_command").click((e)=>{
+                onCommandButtonClick(e)
+            })
     }
     function searchwayPrice(){
         let min  = PriceFilter.min
@@ -411,7 +425,7 @@ $(document).ready(function () {
                           </div>
                         </div>
                         <div id="command_con">
-                            <button class="add_command" id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
+                            <button class="add_command"  id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
                         </div>
                     </div>`
                 }
@@ -431,11 +445,14 @@ $(document).ready(function () {
                           </div>
                         </div>
                         <div id="command_con">
-                            <button class="add_command" id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
+                            <button class="add_command"  id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
                         </div>
                     </div>`
                 }
             }
+        })
+        $(".add_command").click((e)=>{
+            onCommandButtonClick(e)
         })
     }
     function searchwaySearchQte(){
@@ -461,7 +478,7 @@ $(document).ready(function () {
                           </div>
                         </div>
                         <div id="command_con">
-                            <button class="add_command" id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
+                            <button class="add_command"  id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
                         </div>
                     </div>`
                 }
@@ -481,11 +498,14 @@ $(document).ready(function () {
                           </div>
                         </div>
                         <div id="command_con">
-                            <button class="add_command" id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
+                            <button class="add_command"  id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
                         </div>
                     </div>`
                 }
             }
+        })
+        $(".add_command").click((e)=>{
+            onCommandButtonClick(e)
         })
     }
     function searchwaySearchPrice(){
@@ -511,7 +531,7 @@ $(document).ready(function () {
                           </div>
                         </div>
                         <div id="command_con">
-                            <button class="add_command" id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
+                            <button class="add_command"  id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
                         </div>
                     </div>`
                 }
@@ -531,11 +551,14 @@ $(document).ready(function () {
                           </div>
                         </div>
                         <div id="command_con">
-                            <button class="add_command" id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
+                            <button class="add_command"  id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
                         </div>
                     </div>`
                 }
             }
+        })
+        $(".add_command").click((e)=>{
+            onCommandButtonClick(e)
         })
     }
     function searchwayPriceQte(){
@@ -563,7 +586,7 @@ $(document).ready(function () {
                           </div>
                         </div>
                         <div id="command_con">
-                            <button class="add_command" id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
+                            <button class="add_command"  id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
                         </div>
                     </div>`
                 }
@@ -585,7 +608,7 @@ $(document).ready(function () {
                               </div>
                             </div>
                             <div id="command_con">
-                                <button class="add_command" id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
+                                <button class="add_command"  id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
                             </div>
                         </div>`
                     }
@@ -606,13 +629,16 @@ $(document).ready(function () {
                               </div>
                             </div>
                             <div id="command_con">
-                                <button class="add_command" id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
+                                <button class="add_command"  id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
                             </div>
                         </div>`
                     }
                 })
             }
         }
+        $(".add_command").click((e)=>{
+            onCommandButtonClick(e)
+        })
     }
     function searchwaySearchPriceQte(){
         let Pmin  = PriceFilter.min
@@ -639,7 +665,7 @@ $(document).ready(function () {
                           </div>
                         </div>
                         <div id="command_con">
-                            <button class="add_command" id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
+                            <button class="add_command"  id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
                         </div>
                     </div>`
                 }
@@ -661,7 +687,7 @@ $(document).ready(function () {
                               </div>
                             </div>
                             <div id="command_con">
-                                <button class="add_command" id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
+                                <button class="add_command"  id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
                             </div>
                         </div>`
                     }
@@ -682,13 +708,16 @@ $(document).ready(function () {
                               </div>
                             </div>
                             <div id="command_con">
-                                <button class="add_command" id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
+                                <button class="add_command"  id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
                             </div>
                         </div>`
                     }
                 })
             }
         }
+        $(".add_command").click((e)=>{
+            onCommandButtonClick(e)
+        })
     }
 
     function FindSearchWay(){
@@ -739,7 +768,6 @@ $(document).ready(function () {
         onSearchBarChange()
     });
     $("#search_button").click((e)=>{
-        e.stopPropagation()
         var message = []
         var isErrorEX = false
         onSearchBarChange()
