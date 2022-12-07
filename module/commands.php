@@ -132,16 +132,16 @@ class Commands{
                 <div class="order_con">
                     <div id="order_info">
                         <div>
-                            <h2 class="lable">Suplaire:</h2>
-                            <h2 id="suplaireName">'.$array["fornisseur"].'</h2>
+                            <h3 class="lable">Suplaire:</h3>
+                            <h3 id="suplaireName">'.$array["fornisseur"].'</h3>
                         </div>
                         <div>
-                            <h2 class="lable">Medicent:</h2>
-                            <h2 id="medicentName">'.$array["medecament"].'</h2>
+                            <h3 class="lable">Medicent:</h3>
+                            <h3 id="medicentName">'.$array["medecament"].'</h3>
                         </div>
                         <div>
-                            <h2 class="lable">QTE:</h2>
-                            <h2 id="orderedQte">'.$array["qte"].'</h2>
+                            <h3 class="lable">QTE:</h3>
+                            <h3 id="orderedQte">'.$array["qte"].'</h3>
                         </div>
                     </div>
                     <div id="order_underline"></div>
@@ -151,7 +151,7 @@ class Commands{
                             <img src="./total.png" alt="" width="30px">
                         </div>
                         <div id="accepted_con">
-                            <h2>Accepted</h2> <img src="./done.png" alt="" width="30px">
+                            <h3>Accepted</h3> <img src="./done.png" alt="" width="30px">
                         </div>
                     </div>
                 </div>
@@ -161,16 +161,16 @@ class Commands{
                 <div class="order_con">
                     <div id="order_info">
                         <div>
-                            <h2 class="lable">Suplaire:</h2>
-                            <h2 id="suplaireName">'.$array["fornisseur"].'</h2>
+                            <h3 class="lable">Suplaire:</h3>
+                            <h3 id="suplaireName">'.$array["fornisseur"].'</h3>
                         </div>
                         <div>
-                            <h2 class="lable">Medicent:</h2>
-                            <h2 id="medicentName">'.$array["medecament"].'</h2>
+                            <h3 class="lable">Medicent:</h3>
+                            <h3 id="medicentName">'.$array["medecament"].'</h3>
                         </div>
                         <div>
-                            <h2 class="lable">QTE:</h2>
-                            <h2 id="orderedQte">'.$array["qte"].'</h2>
+                            <h3 class="lable">QTE:</h3>
+                            <h3 id="orderedQte">'.$array["qte"].'</h3>
                         </div>
                     </div>
                     <div id="order_underline"></div>

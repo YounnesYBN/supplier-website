@@ -138,7 +138,7 @@ class Medicament_fornisseur
             $arraymedi[]=["id_med"=>$medi['id_med'],"med_name"=>$medi['med_nom'],
             "id_for"=>$medi['id_for'],"for_name"=>$medi['for_nom'],
             "qte"=>$medi['qte'],
-            "prix"=>$medi['prix']];
+            "price"=>$medi['prix']];
         }
         return $arraymedi;
         }catch(Exception $e){
