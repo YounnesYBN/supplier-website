@@ -50,6 +50,7 @@ $(document).ready(function () {
         }
     });
     //get data every time we login
+
     $.ajax({
         type: "GET",
         url: "http://localhost/my-projects/school%20project/control/pharmaci_home_page_control.php",
@@ -794,5 +795,23 @@ $(document).ready(function () {
         $("#success_popup").fadeIn(500); 
     }
     //succes error popup
+
+    //concele order start
+    $(".cancelOrd_button").click((e)=>{
+        var CanceldIdCom = $(".cancelOrd_button").attr("id_command")
+        // $.ajax({
+        //     type: "method",
+        //     url: "url",
+        //     data: "data",
+        //     dataType: "dataType",
+        //     success: function (response) {
+                
+        //     }
+        // });
+        
+    })
+    //concele order end
+    //delete Order start
+    //delete Order end
     
 });

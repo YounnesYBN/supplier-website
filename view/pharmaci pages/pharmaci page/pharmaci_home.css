@@ -1134,7 +1134,7 @@ background: linear-gradient(4deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0
   font-family: 'Quicksand', sans-serif;
   font-family: 'Source Sans Pro', sans-serif;
 }
-#cancelOrd_button{
+.cancelOrd_button{
   width: 80%;
   height: 35%;
   color: white;
@@ -1147,14 +1147,14 @@ background: linear-gradient(4deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   transition: 200ms;
 }
-#cancelOrd_button:hover{
+.cancelOrd_button:hover{
   background-color: white;
   color:#8d99ae79 ;
   border-color: #8d99ae79;
   transform: translateY(-5px);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-#cancelOrd_button:active{
+.cancelOrd_button:active{
   transform: translateY(0px);
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }

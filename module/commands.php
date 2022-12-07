@@ -48,7 +48,7 @@ class Commands{
             }
            
         }
-    public function get_all_command_encour($database){
+    public function get_all_command_encour_accepter($database){
         try{
             $arrayencor=array();
         $quiry1=$database->prepare('SELECT c.id_com as "id_com",f.id_for as "id_for",f.username as "fornesseur",p.id_par as "id_par",p.intitul as "pharmaci",m.id_med as "id_med",m.nom as "medecament", qte as"qte",totale as "totale",command_status as "status" 
@@ -124,6 +124,69 @@ class Commands{
         }
         
     }
+    public function convertDataToEncourAccepter($arrays){
+        $result = "";
+        foreach($arrays as $array){
+            if($array["status"]=="accepter"){
+                $result .=' 
+                <div class="order_con">
+                    <div id="order_info">
+                        <div>
+                            <h2 class="lable">Suplaire:</h2>
+                            <h2 id="suplaireName">'.$array["fornisseur"].'</h2>
+                        </div>
+                        <div>
+                            <h2 class="lable">Medicent:</h2>
+                            <h2 id="medicentName">'.$array["medecament"].'</h2>
+                        </div>
+                        <div>
+                            <h2 class="lable">QTE:</h2>
+                            <h2 id="orderedQte">'.$array["qte"].'</h2>
+                        </div>
+                    </div>
+                    <div id="order_underline"></div>
+                    <div id="cancel_ord_con">
+                        <div id="total_con">
+                            <h1 id="totla">'.$array["totale"].'</h1>
+                            <img src="./total.png" alt="" width="30px">
+                        </div>
+                        <div id="accepted_con">
+                            <h2>Accepted</h2> <img src="./done.png" alt="" width="30px">
+                        </div>
+                    </div>
+                </div>
+                ';
+            }else{
+                $result .=' 
+                <div class="order_con">
+                    <div id="order_info">
+                        <div>
+                            <h2 class="lable">Suplaire:</h2>
+                            <h2 id="suplaireName">'.$array["fornisseur"].'</h2>
+                        </div>
+                        <div>
+                            <h2 class="lable">Medicent:</h2>
+                            <h2 id="medicentName">'.$array["medecament"].'</h2>
+                        </div>
+                        <div>
+                            <h2 class="lable">QTE:</h2>
+                            <h2 id="orderedQte">'.$array["qte"].'</h2>
+                        </div>
+                    </div>
+                    <div id="order_underline"></div>
+                    <div id="cancel_ord_con">
+                        <div id="total_con">
+                            <h1 id="totla">'.$array["totale"].'</h1>
+                            <img src="./total.png" alt="" width="30px">
+                        </div>
+                        <button class="cancelOrd_button" id_command="'.$array['id_com'].'">Cancel Order</button>
+                    </div>
+                </div>
+                ';
+            }
+        }
+        return $result ;
+    }
     public function update_status($id_com,$status,$database){
         try{
             $quiry4=$database->prepare("UPDATE commande set command_status= ? WHERE id_com= ?");
@@ -140,6 +203,7 @@ class Commands{
     
 
 }
+
 
 
 ?>
