@@ -9,6 +9,16 @@ $(document).ready(function () {
     var searchValid = true;
     var SearchValidValue = "";
     var searchWay = "allData"
+    var allWays = [
+        {way:"allData",method:searchwayAllWays},
+        {way:"price",method:searchwayPrice},
+        {way:"qte",method:searchwayQte},
+        {way:"search",method:searchwaySearch},
+        {way:"price&qte",method:searchwayPriceQte},
+        {way:"search&qte",method : searchwaySearchQte},
+        {way:"search&price",method : searchwaySearchPrice},
+        {way:"search&price&qte",method : searchwaySearchPriceQte}
+    ]
     var AllData = [
         {},
         {},
@@ -261,45 +271,406 @@ $(document).ready(function () {
         var resultCon = document.getElementById("#show_result")
         resultCon.innerHTML = ""
         AllData.map((element)=>{
-            resultCon.innerHTML += `
-            <div class="med">
-                <div id="info">
-                  <div id="for_name">
-                        <img src="./Whiteuser.png" alt="" width="21px"><h3>${element.for_name}</h3>
-                  </div>
-                  <div id="med_info">
-                    <div id="med_name"><img src="./Whitepill.png" alt="" width="20px"><h4>${element.med_name}</h4></div>
-                    <div id="med_qte"><img src="./Whitestore.png" alt="" width="20px"> <h4>${element.qte}</h4></div>
-                    <div id="med_price"><img src="./Whiteprice.png" alt="" width="20px"><h4>${element.price}</h4></div>
-                  </div>
-                </div>
-                <div id="command_con">
-                    <button class="add_command" id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
-                </div>
-            </div>`
+            if(element.med_name==SearchValidValue){
+
+                resultCon.innerHTML += `
+                <div class="med">
+                    <div id="info">
+                      <div id="for_name">
+                            <img src="./Whiteuser.png" alt="" width="21px"><h3>${element.for_name}</h3>
+                      </div>
+                      <div id="med_info">
+                        <div id="med_name"><img src="./Whitepill.png" alt="" width="20px"><h4>${element.med_name}</h4></div>
+                        <div id="med_qte"><img src="./Whitestore.png" alt="" width="20px"> <h4>${element.qte}</h4></div>
+                        <div id="med_price"><img src="./Whiteprice.png" alt="" width="20px"><h4>${element.price}</h4></div>
+                      </div>
+                    </div>
+                    <div id="command_con">
+                        <button class="add_command" id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
+                    </div>
+                </div>`
+            }
         })
     }
-    function searchwayQte(){
+    function searchwayAllWays(){
         var resultCon = document.getElementById("#show_result")
         resultCon.innerHTML = ""
         AllData.map((element)=>{
-            resultCon.innerHTML += `
-            <div class="med">
-                <div id="info">
-                  <div id="for_name">
-                        <img src="./Whiteuser.png" alt="" width="21px"><h3>${element.for_name}</h3>
-                  </div>
-                  <div id="med_info">
-                    <div id="med_name"><img src="./Whitepill.png" alt="" width="20px"><h4>${element.med_name}</h4></div>
-                    <div id="med_qte"><img src="./Whitestore.png" alt="" width="20px"> <h4>${element.qte}</h4></div>
-                    <div id="med_price"><img src="./Whiteprice.png" alt="" width="20px"><h4>${element.price}</h4></div>
-                  </div>
-                </div>
-                <div id="command_con">
-                    <button class="add_command" id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
-                </div>
-            </div>`
+            if(element.qte<max){
+
+                resultCon.innerHTML += `
+                <div class="med">
+                    <div id="info">
+                      <div id="for_name">
+                            <img src="./Whiteuser.png" alt="" width="21px"><h3>${element.for_name}</h3>
+                      </div>
+                      <div id="med_info">
+                        <div id="med_name"><img src="./Whitepill.png" alt="" width="20px"><h4>${element.med_name}</h4></div>
+                        <div id="med_qte"><img src="./Whitestore.png" alt="" width="20px"> <h4>${element.qte}</h4></div>
+                        <div id="med_price"><img src="./Whiteprice.png" alt="" width="20px"><h4>${element.price}</h4></div>
+                      </div>
+                    </div>
+                    <div id="command_con">
+                        <button class="add_command" id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
+                    </div>
+                </div>`
+            }
+        }) 
+    }
+    function searchwayQte(){
+        let min  = QteFilter.min
+        let max = QteFilter.max
+        let status = QteFilter.status
+        var resultCon = document.getElementById("#show_result")
+        resultCon.innerHTML = ""
+        
+            if(status=="equal"){
+                AllData.map((element)=>{
+                    if(element.qte<max){
+
+                        resultCon.innerHTML += `
+                        <div class="med">
+                            <div id="info">
+                              <div id="for_name">
+                                    <img src="./Whiteuser.png" alt="" width="21px"><h3>${element.for_name}</h3>
+                              </div>
+                              <div id="med_info">
+                                <div id="med_name"><img src="./Whitepill.png" alt="" width="20px"><h4>${element.med_name}</h4></div>
+                                <div id="med_qte"><img src="./Whitestore.png" alt="" width="20px"> <h4>${element.qte}</h4></div>
+                                <div id="med_price"><img src="./Whiteprice.png" alt="" width="20px"><h4>${element.price}</h4></div>
+                              </div>
+                            </div>
+                            <div id="command_con">
+                                <button class="add_command" id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
+                            </div>
+                        </div>`
+                    }
+                })
+            }else{
+                AllData.map((element)=>{
+                    if(element.qte>=min && element.qte<=max){
+                    
+                        resultCon.innerHTML += `
+                        <div class="med">
+                            <div id="info">
+                              <div id="for_name">
+                                    <img src="./Whiteuser.png" alt="" width="21px"><h3>${element.for_name}</h3>
+                              </div>
+                              <div id="med_info">
+                                <div id="med_name"><img src="./Whitepill.png" alt="" width="20px"><h4>${element.med_name}</h4></div>
+                                <div id="med_qte"><img src="./Whitestore.png" alt="" width="20px"> <h4>${element.qte}</h4></div>
+                                <div id="med_price"><img src="./Whiteprice.png" alt="" width="20px"><h4>${element.price}</h4></div>
+                              </div>
+                            </div>
+                            <div id="command_con">
+                                <button class="add_command" id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
+                            </div>
+                        </div>`
+                    }
+                })
+            }
+    }
+    function searchwayPrice(){
+        let min  = PriceFilter.min
+        let max = PriceFilter.max
+        let status = PriceFilter.status
+        var resultCon = document.getElementById("#show_result")
+        resultCon.innerHTML = ""
+        AllData.map((element)=>{
+            if(status=="equal"){
+                if(element.price<max){
+
+                    resultCon.innerHTML += `
+                    <div class="med">
+                        <div id="info">
+                          <div id="for_name">
+                                <img src="./Whiteuser.png" alt="" width="21px"><h3>${element.for_name}</h3>
+                          </div>
+                          <div id="med_info">
+                            <div id="med_name"><img src="./Whitepill.png" alt="" width="20px"><h4>${element.med_name}</h4></div>
+                            <div id="med_qte"><img src="./Whitestore.png" alt="" width="20px"> <h4>${element.qte}</h4></div>
+                            <div id="med_price"><img src="./Whiteprice.png" alt="" width="20px"><h4>${element.price}</h4></div>
+                          </div>
+                        </div>
+                        <div id="command_con">
+                            <button class="add_command" id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
+                        </div>
+                    </div>`
+                }
+            }else{
+                if(element.price>=min && element.price<=max){
+
+                    resultCon.innerHTML += `
+                    <div class="med">
+                        <div id="info">
+                          <div id="for_name">
+                                <img src="./Whiteuser.png" alt="" width="21px"><h3>${element.for_name}</h3>
+                          </div>
+                          <div id="med_info">
+                            <div id="med_name"><img src="./Whitepill.png" alt="" width="20px"><h4>${element.med_name}</h4></div>
+                            <div id="med_qte"><img src="./Whitestore.png" alt="" width="20px"> <h4>${element.qte}</h4></div>
+                            <div id="med_price"><img src="./Whiteprice.png" alt="" width="20px"><h4>${element.price}</h4></div>
+                          </div>
+                        </div>
+                        <div id="command_con">
+                            <button class="add_command" id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
+                        </div>
+                    </div>`
+                }
+            }
         })
+    }
+    function searchwaySearchQte(){
+        let min  = QteFilter.min
+        let max = QteFilter.max
+        let status = QteFilter.status
+        var resultCon = document.getElementById("#show_result")
+        resultCon.innerHTML = ""
+        AllData.map((element)=>{
+            if(status=="equal"){
+                if(element.qte<max && element.med_name==SearchValidValue){
+
+                    resultCon.innerHTML += `
+                    <div class="med">
+                        <div id="info">
+                          <div id="for_name">
+                                <img src="./Whiteuser.png" alt="" width="21px"><h3>${element.for_name}</h3>
+                          </div>
+                          <div id="med_info">
+                            <div id="med_name"><img src="./Whitepill.png" alt="" width="20px"><h4>${element.med_name}</h4></div>
+                            <div id="med_qte"><img src="./Whitestore.png" alt="" width="20px"> <h4>${element.qte}</h4></div>
+                            <div id="med_price"><img src="./Whiteprice.png" alt="" width="20px"><h4>${element.price}</h4></div>
+                          </div>
+                        </div>
+                        <div id="command_con">
+                            <button class="add_command" id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
+                        </div>
+                    </div>`
+                }
+            }else{
+                if(element.qte>=min && element.qte<=max && element.med_name==SearchValidValue){
+
+                    resultCon.innerHTML += `
+                    <div class="med">
+                        <div id="info">
+                          <div id="for_name">
+                                <img src="./Whiteuser.png" alt="" width="21px"><h3>${element.for_name}</h3>
+                          </div>
+                          <div id="med_info">
+                            <div id="med_name"><img src="./Whitepill.png" alt="" width="20px"><h4>${element.med_name}</h4></div>
+                            <div id="med_qte"><img src="./Whitestore.png" alt="" width="20px"> <h4>${element.qte}</h4></div>
+                            <div id="med_price"><img src="./Whiteprice.png" alt="" width="20px"><h4>${element.price}</h4></div>
+                          </div>
+                        </div>
+                        <div id="command_con">
+                            <button class="add_command" id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
+                        </div>
+                    </div>`
+                }
+            }
+        })
+    }
+    function searchwaySearchPrice(){
+        let min  = PriceFilter.min
+        let max = PriceFilter.max
+        let status = PriceFilter.status
+        var resultCon = document.getElementById("#show_result")
+        resultCon.innerHTML = ""
+        AllData.map((element)=>{
+            if(status=="equal"){
+                if(element.price<max && element.med_name==SearchValidValue){
+
+                    resultCon.innerHTML += `
+                    <div class="med">
+                        <div id="info">
+                          <div id="for_name">
+                                <img src="./Whiteuser.png" alt="" width="21px"><h3>${element.for_name}</h3>
+                          </div>
+                          <div id="med_info">
+                            <div id="med_name"><img src="./Whitepill.png" alt="" width="20px"><h4>${element.med_name}</h4></div>
+                            <div id="med_qte"><img src="./Whitestore.png" alt="" width="20px"> <h4>${element.qte}</h4></div>
+                            <div id="med_price"><img src="./Whiteprice.png" alt="" width="20px"><h4>${element.price}</h4></div>
+                          </div>
+                        </div>
+                        <div id="command_con">
+                            <button class="add_command" id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
+                        </div>
+                    </div>`
+                }
+            }else{
+                if(element.price>=min && element.price<=max && element.med_name==SearchValidValue){
+
+                    resultCon.innerHTML += `
+                    <div class="med">
+                        <div id="info">
+                          <div id="for_name">
+                                <img src="./Whiteuser.png" alt="" width="21px"><h3>${element.for_name}</h3>
+                          </div>
+                          <div id="med_info">
+                            <div id="med_name"><img src="./Whitepill.png" alt="" width="20px"><h4>${element.med_name}</h4></div>
+                            <div id="med_qte"><img src="./Whitestore.png" alt="" width="20px"> <h4>${element.qte}</h4></div>
+                            <div id="med_price"><img src="./Whiteprice.png" alt="" width="20px"><h4>${element.price}</h4></div>
+                          </div>
+                        </div>
+                        <div id="command_con">
+                            <button class="add_command" id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
+                        </div>
+                    </div>`
+                }
+            }
+        })
+    }
+    function searchwayPriceQte(){
+        let Pmin  = PriceFilter.min
+        let Pmax = PriceFilter.max
+        let Pstatus = PriceFilter.status
+        let Qmin  = QteFilter.min
+        let Qmax = QteFilter.max
+        let Qstatus = QteFilter.status
+        var resultCon = document.getElementById("#show_result")
+        resultCon.innerHTML = ""
+        if(Pstatus=="equal"&&Qstatus=="equal"){
+            AllData.map((element)=>{
+                if(element.qte<=Qmax && element.price<=Pmax){
+                    resultCon.innerHTML += `
+                    <div class="med">
+                        <div id="info">
+                          <div id="for_name">
+                                <img src="./Whiteuser.png" alt="" width="21px"><h3>${element.for_name}</h3>
+                          </div>
+                          <div id="med_info">
+                            <div id="med_name"><img src="./Whitepill.png" alt="" width="20px"><h4>${element.med_name}</h4></div>
+                            <div id="med_qte"><img src="./Whitestore.png" alt="" width="20px"> <h4>${element.qte}</h4></div>
+                            <div id="med_price"><img src="./Whiteprice.png" alt="" width="20px"><h4>${element.price}</h4></div>
+                          </div>
+                        </div>
+                        <div id="command_con">
+                            <button class="add_command" id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
+                        </div>
+                    </div>`
+                }
+            })
+        }else{
+            if(Pstatus=="equal"&&Qstatus=="Nequal"){
+                AllData.map((element)=>{
+                    if((element.qte<=Qmax && element.qte>=Qmin) && element.price<=Pmax){
+                        resultCon.innerHTML += `
+                        <div class="med">
+                            <div id="info">
+                              <div id="for_name">
+                                    <img src="./Whiteuser.png" alt="" width="21px"><h3>${element.for_name}</h3>
+                              </div>
+                              <div id="med_info">
+                                <div id="med_name"><img src="./Whitepill.png" alt="" width="20px"><h4>${element.med_name}</h4></div>
+                                <div id="med_qte"><img src="./Whitestore.png" alt="" width="20px"> <h4>${element.qte}</h4></div>
+                                <div id="med_price"><img src="./Whiteprice.png" alt="" width="20px"><h4>${element.price}</h4></div>
+                              </div>
+                            </div>
+                            <div id="command_con">
+                                <button class="add_command" id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
+                            </div>
+                        </div>`
+                    }
+                })
+            }else{
+                AllData.map((element)=>{
+                    if(element.qte<=Qmax && (element.price<=Pmax && element.price>=Pmin)){
+                        resultCon.innerHTML += `
+                        <div class="med">
+                            <div id="info">
+                              <div id="for_name">
+                                    <img src="./Whiteuser.png" alt="" width="21px"><h3>${element.for_name}</h3>
+                              </div>
+                              <div id="med_info">
+                                <div id="med_name"><img src="./Whitepill.png" alt="" width="20px"><h4>${element.med_name}</h4></div>
+                                <div id="med_qte"><img src="./Whitestore.png" alt="" width="20px"> <h4>${element.qte}</h4></div>
+                                <div id="med_price"><img src="./Whiteprice.png" alt="" width="20px"><h4>${element.price}</h4></div>
+                              </div>
+                            </div>
+                            <div id="command_con">
+                                <button class="add_command" id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
+                            </div>
+                        </div>`
+                    }
+                })
+            }
+        }
+    }
+    function searchwaySearchPriceQte(){
+        let Pmin  = PriceFilter.min
+        let Pmax = PriceFilter.max
+        let Pstatus = PriceFilter.status
+        let Qmin  = QteFilter.min
+        let Qmax = QteFilter.max
+        let Qstatus = QteFilter.status
+        var resultCon = document.getElementById("#show_result")
+        resultCon.innerHTML = ""
+        if(Pstatus=="equal"&&Qstatus=="equal"){
+            AllData.map((element)=>{
+                if(element.qte<=Qmax && element.price<=Pmax && element.med_name == SearchValidValue){
+                    resultCon.innerHTML += `
+                    <div class="med">
+                        <div id="info">
+                          <div id="for_name">
+                                <img src="./Whiteuser.png" alt="" width="21px"><h3>${element.for_name}</h3>
+                          </div>
+                          <div id="med_info">
+                            <div id="med_name"><img src="./Whitepill.png" alt="" width="20px"><h4>${element.med_name}</h4></div>
+                            <div id="med_qte"><img src="./Whitestore.png" alt="" width="20px"> <h4>${element.qte}</h4></div>
+                            <div id="med_price"><img src="./Whiteprice.png" alt="" width="20px"><h4>${element.price}</h4></div>
+                          </div>
+                        </div>
+                        <div id="command_con">
+                            <button class="add_command" id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
+                        </div>
+                    </div>`
+                }
+            })
+        }else{
+            if(Pstatus=="equal"&&Qstatus=="Nequal"){
+                AllData.map((element)=>{
+                    if((element.qte<=Qmax && element.qte>=Qmin) && element.price<=Pmax && element.med_name == SearchValidValue){
+                        resultCon.innerHTML += `
+                        <div class="med">
+                            <div id="info">
+                              <div id="for_name">
+                                    <img src="./Whiteuser.png" alt="" width="21px"><h3>${element.for_name}</h3>
+                              </div>
+                              <div id="med_info">
+                                <div id="med_name"><img src="./Whitepill.png" alt="" width="20px"><h4>${element.med_name}</h4></div>
+                                <div id="med_qte"><img src="./Whitestore.png" alt="" width="20px"> <h4>${element.qte}</h4></div>
+                                <div id="med_price"><img src="./Whiteprice.png" alt="" width="20px"><h4>${element.price}</h4></div>
+                              </div>
+                            </div>
+                            <div id="command_con">
+                                <button class="add_command" id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
+                            </div>
+                        </div>`
+                    }
+                })
+            }else{
+                AllData.map((element)=>{
+                    if(element.qte<=Qmax && (element.price<=Pmax && element.price>=Pmin) && element.med_name == SearchValidValue){
+                        resultCon.innerHTML += `
+                        <div class="med">
+                            <div id="info">
+                              <div id="for_name">
+                                    <img src="./Whiteuser.png" alt="" width="21px"><h3>${element.for_name}</h3>
+                              </div>
+                              <div id="med_info">
+                                <div id="med_name"><img src="./Whitepill.png" alt="" width="20px"><h4>${element.med_name}</h4></div>
+                                <div id="med_qte"><img src="./Whitestore.png" alt="" width="20px"> <h4>${element.qte}</h4></div>
+                                <div id="med_price"><img src="./Whiteprice.png" alt="" width="20px"><h4>${element.price}</h4></div>
+                              </div>
+                            </div>
+                            <div id="command_con">
+                                <button class="add_command" id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
+                            </div>
+                        </div>`
+                    }
+                })
+            }
+        }
     }
 
     function FindSearchWay(){
@@ -371,8 +742,12 @@ $(document).ready(function () {
             ActiveErrorPopUp(message.join("<br>"))
         }
         FindSearchWay()
+        allWays.map((way)=>{
+            if(way.method=="searchWay"){
+                way.method()
+            }
+        })
         
-
     })
     //for search popup end
     //succes error popup
