@@ -7,6 +7,26 @@ $(document).ready(function () {
     var PriceFilter = {min:0,max:0,isActive:false,status:""}
     var QteFilter = {min:0,max:0,isActive:false,status:""}
     var searchValid = true;
+    var SearchValidValue = "";
+    
+    // allData.map((element)=>{
+    //     document.getElementById("show_result").innerHTML += `
+    //     <div class="med">
+    //         <div id="info">
+    //           <div id="for_name">
+    //                 <img src="./Whiteuser.png" alt="" width="21px"><h3>${element.for_name}</h3>
+    //           </div>
+    //           <div id="med_info">
+    //             <div id="med_name"><img src="./Whitepill.png" alt="" width="20px"><h4>${element.med_name}</h4></div>
+    //             <div id="med_qte"><img src="./Whitestore.png" alt="" width="20px"> <h4>${element.qte}</h4></div>
+    //             <div id="med_price"><img src="./Whiteprice.png" alt="" width="20px"><h4>${element.price}</h4></div>
+    //           </div>
+    //         </div>
+    //         <div id="command_con">
+    //             <button class="add_command" id_for="${element.id_for}" id_med="${element.id_med}" qte="${element.qte}" price="${element.price}" med_name="${element.med_name}">ADD</button>
+    //         </div>
+    //     </div>`
+    // })
     //check Access
     $.ajax({
         type: "get",
@@ -60,15 +80,17 @@ $(document).ready(function () {
         $("#add_order").attr("ordered_id_med","")
         $("#add_order").attr("ordered_id_for","")
 
-    }     
-    $("#add_command").click((e)=>{
+    }    
+    $(".add_command").click((e)=>{
         e.stopPropagation()
+        var ele = e.target
         $("#order_popup").fadeIn()
-        var med_name = $("#add_command").attr("med_name")
-        var med_qte =  $("#add_command").attr("qte")
-        var med_price =  $("#add_command").attr("price")
-        var id_med =  $("#add_command").attr("id_med")
-        var id_for =  $("#add_command").attr("id_for")
+        console.log(e.target)
+        var med_name = ele.getAttribute("med_name")
+        var med_qte =  ele.getAttribute("qte")
+        var med_price = ele.getAttribute("price")
+        var id_med =  ele.getAttribute("id_med")
+        var id_for =  ele.getAttribute("id_for")
 
         SetValuesForOrderPopup(id_med,id_for,med_name,med_qte,med_price)
         console.log($("#add_order").attr("ordered_id_med"),$("#add_order").attr("ordered_id_for"),priceOfOrderdMed)
@@ -247,13 +269,14 @@ $(document).ready(function () {
         var ele = document.getElementById("search_bar")
         var Searchvalue = ele.value
         var check1 = /^[a-zA-Z]{0,}$/
-        var check2 = Searchvalue.length>0
-        if(check1.test(Searchvalue)==true && check2==true){
+        if(check1.test(Searchvalue)==true){
             ele.style.borderColor = "#8EC5FC"
             searchValid = true
+            SearchValidValue = Searchvalue
         }else{
             ele.style.borderColor = "#f40d3c"
             searchValid =false 
+            SearchValidValue = ""
         }
     }
     $("#search_med").click(()=>{
