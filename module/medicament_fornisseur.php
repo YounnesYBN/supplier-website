@@ -128,6 +128,25 @@ class Medicament_fornisseur
         }
         return $allComponent;
     }
-    
+    public function get_all_med($database){
+        $arraymedi=array();
+        try{
+            $quiry=$database->exec("SELECT medicament.nom as 'med_nom',fornesseur.username as 'for_nom' ,qte,prix 
+        FROM medi_forni INNER JOIN medicament ON medi_forni.id_med = medicament.id_med 
+        INNER JOIN fornesseur ON medi_forni.id_for = fornesseur.id_for");
+        while($medi=$quiry->fatch()){
+            $arraymedi[]=["med_nom"=>$medi['med_nom'],
+            "for_nom"=>$medi['for_nom'],
+            "qte"=>$medi['qte'],
+            "prix"=>$medi['prix']];
+        }
+        return $arraymedi;
+        }catch(Exception $e){
+            return false ;
+
+        }
+        
+    }
+   
 }
 ?>

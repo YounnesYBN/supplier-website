@@ -51,10 +51,12 @@ class Commands{
     public function get_all_command_encour($database){
         try{
             $arrayencor=array();
-        $quiry1=$database->exec('SELECT id_for as "id_for",fornesseur.username as "fornesseur",id_par as "id_par",pharmaci.intitul as "pharmaci",id_med as "id_med",medicament.nom as "medecament", qte as"qte",totale as "totale",command_status as "status"
-        from commande c,fornesseur f,mdicament m,pharmaci p
-        where c.id_for=f.id_for AND c.id_med=m.id_med AND c.id_par=p.id_par AND
-        command_status="en_coure"');
+        $quiry1=$database->exec('SELECT f.id_for as "id_for",f.username as "fornesseur",p.id_par as "id_par",p.intitul as "pharmaci",m.id_med as "id_med",m.nom as "medecament", qte as"qte",totale as "totale",command_status as "status" 
+        from commande c,fornesseur f,medicament m,pharmaci p 
+        where c.id_for=f.id_for AND
+         c.id_med=m.id_med AND
+          c.id_par=p.id_par AND 
+          command_status="en_coure"');
         while($result=$quiry1->fetch()){
             $arrayencor[]=["id_for" => $result["id_for"],"fornisseur"=>$result["fornesseur"],
             "id_par" =>$result["id_par"],"pharmaci"=> $result["pharmaci"],
@@ -74,10 +76,12 @@ class Commands{
     public function get_all_command_refusee($database){
          try{
             $arrayrefuse=array();
-        $quiry2=$database->exec('SELECT id_for as "id_for",fornesseur.username as "fornesseur",id_par as "id_par",pharmaci.intitul as "pharmaci",id_med as "id_med",medicament.nom as "medecament", qte as"qte",totale as "totale",command_status as "status"
-        from commande c,fornesseur f,mdicament m,pharmaci p
-        where c.id_for=f.id_for AND c.id_med=m.id_med AND c.id_par=p.id_par AND
-        command_status="refusee"');
+        $quiry2=$database->exec('SELECT f.id_for as "id_for",f.username as "fornesseur",p.id_par as "id_par",p.intitul as "pharmaci",m.id_med as "id_med",m.nom as "medecament", qte as"qte",totale as "totale",command_status as "status" 
+        from commande c,fornesseur f,medicament m,pharmaci p 
+        where c.id_for=f.id_for AND
+         c.id_med=m.id_med AND
+          c.id_par=p.id_par AND 
+          command_status="refusee"');
         while($result=$quiry2->fetch()){
             $arrayrefuse[]=["id_for" => $result["id_for"],"fornisseur"=>$result["fornesseur"],
             "id_par" =>$result["id_par"],"pharmaci"=> $result["pharmaci"],
@@ -96,10 +100,12 @@ class Commands{
     public function get_all_command_annule($database){
         try{
             $arrayrannule=array();
-        $quiry3=$database->exec('SELECT id_for as "id_for",fornesseur.username as "fornesseur",id_par as "id_par",pharmaci.intitul as "pharmaci",id_med as "id_med",medicament.nom as "medecament", qte as"qte",totale as "totale",command_status as "status"
-        from commande c,fornesseur f,mdicament m,pharmaci p
-        where c.id_for=f.id_for AND c.id_med=m.id_med AND c.id_par=p.id_par AND
-        command_status="annule"');
+        $quiry3=$database->exec('SELECT f.id_for as "id_for",f.username as "fornesseur",p.id_par as "id_par",p.intitul as "pharmaci",m.id_med as "id_med",m.nom as "medecament", qte as"qte",totale as "totale",command_status as "status" 
+        from commande c,fornesseur f,medicament m,pharmaci p 
+        where c.id_for=f.id_for AND
+         c.id_med=m.id_med AND
+          c.id_par=p.id_par AND 
+          command_status="annule"');
         while($result=$quiry3->fetch()){
             $arrayrannule[]=["id_for" => $result["id_for"],"fornisseur"=>$result["fornesseur"],
             "id_par" =>$result["id_par"],"pharmaci"=> $result["pharmaci"],
@@ -115,9 +121,20 @@ class Commands{
         }
         
     }
+    public function update_status($id_com,$status,$database){
+        $quiry4=$database->exec("UPDATE command set command_status= . '$status' . WHERE id_com= . '$id_com' .");
+        if($quiry4->fetch()){
+            return true;
+        }else{
+            return false ;
+        }
+    }
     
 
 }
+
+
+
 
 
 ?>
