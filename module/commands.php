@@ -1,13 +1,13 @@
 <?php
 class Commands{
-    public int $id_for;
-    public int $id_med;
-    public int $id_par;
-    public int $qte;
-    public float $totale;
+    public string $id_for;
+    public string $id_med;
+    public string $id_par;
+    public string $qte;
+    public string $totale;
     public string $status;
 
-    public function __construct(int $id_for,int $id_med, int $id_par,int $qte,float $totale,string $status){
+    public function __construct(string $id_for="",string $id_med="", string $id_par="",string $qte="",string $totale="",string $status=""){
         $this->id_for=$id_for;
         $this->id_med=$id_med;
         $this->id_par=$id_par;
@@ -111,13 +111,17 @@ class Commands{
 
         return $arrayrannule;
         }catch(Exception $e){
-            return false ;
+            return $e ;
         }
         
     }
     
 
 }
+
+$com = new Commands();
+$db = $com->connect_db();
+echo ($com->get_all_command_annule($db))
 
 
 ?>
