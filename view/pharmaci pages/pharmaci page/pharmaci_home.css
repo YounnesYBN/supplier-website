@@ -1171,7 +1171,7 @@ background: linear-gradient(4deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0
   font-family: 'Caveat', cursive;
   color: #06D6A0;
 }
-#DeleteOrd_button{
+.DeleteOrd_button{
   width: 80%;
   height: 35%;
   color: white;
@@ -1184,20 +1184,20 @@ background: linear-gradient(4deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   transition: 200ms;
 }
-#DeleteOrd_button:hover{
+.DeleteOrd_button:hover{
   background-color: white;
   color:#f40d3c ;
   border-color: #f40d3c;
   transform: translateY(-5px);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-#DeleteOrd_button:active{
+.DeleteOrd_button:active{
   transform: translateY(0px);
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 
-#Delete_canceled_button{
+.Delete_canceled_button{
   width: 80%;
   height: 35%;
   color: white;
@@ -1210,14 +1210,14 @@ background: linear-gradient(4deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   transition: 200ms;
 }
-#Delete_canceled_button:hover{
+.Delete_canceled_button:hover{
   background-color: white;
   color:#f40d3c ;
   border-color: #f40d3c;
   transform: translateY(-5px);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-#Delete_canceled_button:active{
+.Delete_canceled_button:active{
   transform: translateY(0px);
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }

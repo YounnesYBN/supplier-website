@@ -798,7 +798,8 @@ $(document).ready(function () {
 
     //concele order start
     $(".cancelOrd_button").click((e)=>{
-        var CanceldIdCom = $(".cancelOrd_button").attr("id_command")
+        var ele  = e.target
+        var CanceldIdCom = ele.getAttribute("id_command")
         // $.ajax({
         //     type: "method",
         //     url: "url",
@@ -811,7 +812,35 @@ $(document).ready(function () {
         
     })
     //concele order end
-    //delete Order start
-    //delete Order end
+    //delete refused Order start
+    $(".DeleteOrd_button").click((e)=>{
+        var ele  = e.target
+        var DeletedRefusedIdCom = ele.getAttribute("id_command")
+        // $.ajax({
+        //     type: "method",
+        //     url: "url",
+        //     data: "data",
+        //     dataType: "dataType",
+        //     success: function (response) {
+                
+        //     }
+        // });
+        
+    })
+    //delete refused Order end
+    $(".Delete_canceled_button").click((e)=>{
+        var ele  = e.target
+        var DeletedCanceledIdCom = ele.getAttribute("id_command")
+        // $.ajax({
+        //     type: "method",
+        //     url: "url",
+        //     data: "data",
+        //     dataType: "dataType",
+        //     success: function (response) {
+                
+        //     }
+        // });
+        
+    })
     
 });
