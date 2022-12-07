@@ -613,7 +613,7 @@ font-family: 'Source Sans Pro', sans-serif;
 
 
 
-#add_command {
+.add_command {
 width: 50%;
 height: 40%;
 appearance: none;
@@ -639,11 +639,11 @@ touch-action: manipulation;
 will-change: transform;
 }
 
-#add_command:disabled {
+.add_command:disabled {
 pointer-events: none;
 }
 
-#add_command:hover {
+.add_command:hover {
   width: 55%;
   height: 40%;
 box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
@@ -654,7 +654,7 @@ border-color: #80ED99;
 
 }
 
-#add_command:active {
+.add_command:active {
 box-shadow: none;
 transform: translateY(0);
 }
