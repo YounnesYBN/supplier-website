@@ -135,8 +135,8 @@ class Medicament_fornisseur
         FROM medi_forni INNER JOIN medicament ON medi_forni.id_med = medicament.id_med 
         INNER JOIN fornesseur ON medi_forni.id_for = fornesseur.id_for");
         while($medi=$quiry->fetch()){
-            $arraymedi[]=["id_med"=>$medi['id_med'],"med_nom"=>$medi['med_nom'],
-            "id_for"=>$medi['id_for'],"for_nom"=>$medi['for_nom'],
+            $arraymedi[]=["id_med"=>$medi['id_med'],"med_name"=>$medi['med_nom'],
+            "id_for"=>$medi['id_for'],"for_name"=>$medi['for_nom'],
             "qte"=>$medi['qte'],
             "prix"=>$medi['prix']];
         }
@@ -149,7 +149,4 @@ class Medicament_fornisseur
     }
    
 }
-$mid= new Medicament_fornisseur("","","","");
-$db=$mid->connect_bd();
-print_r($mid->get_all_med($db));
 ?>
