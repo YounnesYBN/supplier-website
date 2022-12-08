@@ -33,6 +33,11 @@ $(document).ready(function () {
         SetValuesForOrderPopup(id_med,id_for,med_name,med_qte,med_price)
         
     }
+
+
+    
+   
+ 
     //check Access
     $.ajax({
         type: "get",
@@ -58,6 +63,29 @@ $(document).ready(function () {
         }   
     });
 
+    // refusee data
+    $.ajax({
+        type:"get",
+        url:"http://localhost/my-projects/school%20project/control/pharmaci_home_page_control.php",
+        data:{getdataR:"true"},
+        dataType:"JSON",
+        success:function(reponse){
+            document.querySelector("#all_commande_refused #display").innerHTML=reponse.get_refusee
+            
+        }
+    })
+    
+    $.ajax({
+        type:"get",
+        url:"http://localhost/my-projects/school%20project/control/pharmaci_home_page_control.php",
+        data:{getdataA:"true"},
+        dataType:"JSON",
+        success:function(reponse){
+            document.querySelector("#all_commande_canceled #display").innerHTML=reponse.get_anul;
+        }
+    })
+
+
     //get all avalibal commande 
     $.ajax({
         type: "get",
@@ -79,6 +107,9 @@ $(document).ready(function () {
             document.querySelector("#all_commande_unrefused #display").innerHTML = response.encour_accepter_orders
         }
     });
+    
+ searchwayAllWays()
+ 
     //exite button
     $("#logout").click(()=>{
         $.ajax({

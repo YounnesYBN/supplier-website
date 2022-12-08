@@ -124,6 +124,68 @@ class Commands{
         }
         
     }
+    public function convertDataToannul($array){
+        $results="";
+        foreach($array as $values){
+            $results .='<div class="order_con">
+            <div id="order_info">
+                <div>
+                    <h2 class="lable">Suplaire:</h2>
+                    <h2 id="suplaireName">'.$values['fornisseur'].'</h2>
+                </div>
+                <div>
+                    <h2 class="lable">Medicent:</h2>
+                    <h2 id="medicentName">'.$values['medecament'].'</h2>
+                </div>
+                <div>
+                    <h2 class="lable">QTE:</h2>
+                    <h2 id="orderedQte">'.$values['qte'].'</h2>
+                </div>
+            </div>
+            <div id="order_underline"></div>
+            <div id="Delete_canceled_con">
+                <div id="total_con">
+                    <h1 id="totla">'.$values['totale'].'</h1>
+                    <img src="./total.png" alt="" width="30px">
+                </div>
+                <button class="Delete_canceled_button" id_command="1">Delete</button>
+            </div>
+        </div>';
+        }
+        return $results;
+    }
+    public function convertDataToEncourRefusse($array){
+        $results="";
+        foreach($array as $values){
+            $results .='<div class="order_con">
+            <div id="order_info">
+                <div>
+                    <h2 class="lable">Suplaire:</h2>
+                    <h2 id="suplaireName">'.$values['fornisseur'].'</h2>
+                </div>
+                <div>
+                    <h2 class="lable">Medicent:</h2>
+                    <h2 id="medicentName">'.$values['medecament'].'</h2>
+                </div>
+                <div>
+                    <h2 class="lable">QTE:</h2>
+                    <h2 id="orderedQte">'.$values['qte'].'</h2>
+                </div>
+            </div>
+            <div id="order_underline"></div>
+            <div id="Delete_ord_con">
+                <div id="total_con">
+                    <h1 id="totla">'.$values['totale'].'</h1>
+                    <img src="./total.png" alt="" width="30px">
+                </div>
+                <button class="DeleteOrd_button" id_command="1">Delete</button>
+            </div>
+        </div>';
+
+        }
+        return $results;
+
+    }
     public function convertDataToEncourAccepter($arrays){
         $result = "";
         foreach($arrays as $array){
