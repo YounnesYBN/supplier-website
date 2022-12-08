@@ -133,7 +133,7 @@ class Medicament_fornisseur
         try{
             $quiry=$database->query("SELECT medicament.id_med as 'id_med', medicament.nom as 'med_nom',fornesseur.id_for as 'id_for', fornesseur.username as 'for_nom' ,qte,prix 
         FROM medi_forni INNER JOIN medicament ON medi_forni.id_med = medicament.id_med 
-        INNER JOIN fornesseur ON medi_forni.id_for = fornesseur.id_for");
+        INNER JOIN fornesseur ON medi_forni.id_for = fornesseur.id_for where qte>0");
         while($medi=$quiry->fetch()){
             $arraymedi[]=["id_med"=>$medi['id_med'],"med_name"=>$medi['med_nom'],
             "id_for"=>$medi['id_for'],"for_name"=>$medi['for_nom'],
