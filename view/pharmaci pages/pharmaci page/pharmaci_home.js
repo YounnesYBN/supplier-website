@@ -34,10 +34,10 @@ $(document).ready(function () {
         
     }
 
+
     
-    searchwayAllWays()
-    //
    
+ 
     //check Access
     $.ajax({
         type: "get",
@@ -45,7 +45,6 @@ $(document).ready(function () {
         data: {checkAccess : "true"},
         dataType: "JSON",
         success: function (response) {
-            console.log(response)
             if(response.allow==false){
                 location.href ="http://localhost/my-projects/school%20project/view/login%20pharmaci/pharmaci_login.html" 
             }
@@ -63,6 +62,7 @@ $(document).ready(function () {
             document.getElementById("email").innerText += response.email;
         }   
     });
+
     // refusee data
     $.ajax({
         type:"get",
@@ -74,7 +74,7 @@ $(document).ready(function () {
             
         }
     })
-    // 
+    
     $.ajax({
         type:"get",
         url:"http://localhost/my-projects/school%20project/control/pharmaci_home_page_control.php",
@@ -84,6 +84,32 @@ $(document).ready(function () {
             document.querySelector("#all_commande_canceled #display").innerHTML=reponse.get_anul;
         }
     })
+
+
+    //get all avalibal commande 
+    $.ajax({
+        type: "get",
+        url: "http://localhost/my-projects/school%20project/control/pharmaci_home_page_control.php",
+        data: {get_all_ord:"true"},
+        dataType: "JSON",
+        success: function (response) {
+            AllData = AllData.concat(response.avalibal_com)
+            searchwayAllWays()
+        }
+    });
+    //get all pharmaci orders
+    $.ajax({
+        type: "get",
+        url: "http://localhost/my-projects/school%20project/control/pharmaci_home_page_control.php",
+        data: {get_pharmaci_ord:"true"},
+        dataType: "JSON",
+        success: function (response) {
+            document.querySelector("#all_commande_unrefused #display").innerHTML = response.encour_accepter_orders
+        }
+    });
+    
+ searchwayAllWays()
+ 
     //exite button
     $("#logout").click(()=>{
         $.ajax({
@@ -152,7 +178,6 @@ $(document).ready(function () {
     })
     function setFilterPrice(){
         const {valid,max,min} = PriceBetween ;
-        console.log(valid)
         if(valid==true){
             if(min.val!=max.val){
                 PriceFilter.status="Nequal"
@@ -172,11 +197,9 @@ $(document).ready(function () {
         }else{
             PriceFilter.isActive=false
         }
-        console.log(PriceFilter)
     }
     function setQteFilter(){
         const {valid,max,min} = QteBetween ;
-        console.log(valid)
         if(valid==true){
             if(min.val!=max.val){
                 QteFilter.status="Nequal"
@@ -196,7 +219,6 @@ $(document).ready(function () {
         }else{
             QteFilter.isActive=false
         }
-        console.log(QteFilter)
     }
     function onPriceGrateChange(){
         var ele = document.getElementById("PriceGrater")
@@ -821,7 +843,8 @@ $(document).ready(function () {
 
     //concele order start
     $(".cancelOrd_button").click((e)=>{
-        var CanceldIdCom = $(".cancelOrd_button").attr("id_command")
+        var ele  = e.target
+        var CanceldIdCom = ele.getAttribute("id_command")
         // $.ajax({
         //     type: "method",
         //     url: "url",
@@ -834,7 +857,36 @@ $(document).ready(function () {
         
     })
     //concele order end
-    //delete Order start
-    //delete Order end
-    
+    //delete refused Order start
+    $(".DeleteOrd_button").click((e)=>{
+        var ele  = e.target
+        var DeletedRefusedIdCom = ele.getAttribute("id_command")
+        // $.ajax({
+        //     type: "method",
+        //     url: "url",
+        //     data: "data",
+        //     dataType: "dataType",
+        //     success: function (response) {
+                
+        //     }
+        // });
+        
+    })
+    //delete refused Order end
+    //delete canceled orders start
+    $(".Delete_canceled_button").click((e)=>{
+        var ele  = e.target
+        var DeletedCanceledIdCom = ele.getAttribute("id_command")
+        // $.ajax({
+        //     type: "method",
+        //     url: "url",
+        //     data: "data",
+        //     dataType: "dataType",
+        //     success: function (response) {
+                
+        //     }
+        // });
+        
+    })
+    //delete canceled orders end
 });
