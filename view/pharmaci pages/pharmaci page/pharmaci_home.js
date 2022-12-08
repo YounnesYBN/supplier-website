@@ -108,7 +108,6 @@ $(document).ready(function () {
         }
     });
     
- searchwayAllWays()
  
     //exite button
     $("#logout").click(()=>{

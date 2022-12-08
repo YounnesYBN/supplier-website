@@ -2,7 +2,6 @@
 include "./../module/medicament_fornisseur.php";
 include "./../module/commands.php";
 session_start();
-include "./../module/commands.php";
 if(isset($_GET["checkAccess"])){
 
     if(isset($_SESSION["accessPass"])){
@@ -60,7 +59,7 @@ if(isset($_GET['getdataR'])){
         
     }
      
-};
+}
 
 if(isset($_GET['getdataA'])){
     $id_phar=$_SESSION['id'];
