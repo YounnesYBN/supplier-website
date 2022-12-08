@@ -154,9 +154,30 @@ $(document).ready(function () {
         Total = 0
     })
     $("#add_order").click((e)=>{
+        e.stopPropagation()
         var ordered_id_med = e.target.getAttribute("ordered_id_med")
         var ordered_id_for = e.target.getAttribute("ordered_id_for")
-        console.log(Total,ordered_id_for,ordered_id_med,document.getElementById("set_qte").value)
+        var qteOrdered = document.getElementById("set_qte").value
+        $.ajax({
+            type: "post",
+            url: "http://localhost/my-projects/school%20project/control/pharmaci_home_page_control.php",
+            data: {
+                add_order:"true",
+                id_med:ordered_id_med,
+                id_for:ordered_id_for,
+                qte : qteOrdered,
+                total :Total
+            },
+            dataType: "JSON",
+            success: function (response) {
+                if(response.error==true){
+                    ActiveErrorPopUp(response.message)
+                }else{
+                    ActiveSuccessPopUp(response.message)
+                    setTimeout(()=>{location.reload()},2000)
+                }
+            }
+        });
         
     })
     
@@ -794,6 +815,7 @@ $(document).ready(function () {
         onSearchBarChange()
     });
     $("#search_button").click((e)=>{
+        e.stopPropagation()
         var message = []
         var isErrorEX = false
         onSearchBarChange()

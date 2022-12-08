@@ -69,11 +69,27 @@ if(isset($_GET['getdataA'])){
        $array=$com->get_all_command_annule($db);
        $com_annuler=$com->convertDataToannul($array);
        echo json_encode(["get_anul"=>$com_annuler]);
-    }
-    
+    } 
+}
 
-        
-    
+if(isset($_POST["add_order"])){
+    $idPharci = $_SESSION["id"];
+    $orderId_med =  $_POST["id_med"];
+    $orderId_for =  $_POST["id_for"];
+    $qte = $_POST["qte"];
+    $total = $_POST["total"];
+    $CommandObj = new Commands($orderId_for,$orderId_med,$idPharci,$qte,$total,"en_coure");
+    $db3 = $CommandObj->connect_db();
+    if($db3!=false){
+        $order = $CommandObj->add_command($db3);
+        if($order == true){
+            echo json_encode(["error"=>false,"message"=>"order is added successfully"]) ;
+        }else{
+            echo json_encode(["error"=>true,"message"=>"somthing went wrong"]) ;
+        }
+    }else{
+        echo json_encode(["error"=>true,"message"=>"error in database"]);
+    }
 }
 
 
