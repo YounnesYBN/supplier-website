@@ -124,6 +124,35 @@ if(isset($_POST["addMed"])){
         echo json_encode(["error"=>true,"message"=>"error in database"]); 
     }
 }
+if(isset($_POST['acceptOrder'])){
+    $id_com = $_POST['id_com'];
+    $id_med = $_POST['id_med'];
+    $id_for = $_POST['id_for'];
+    $qte = $_POST['qte'];
+    $commandObj2 = new Commands();
+    $updateQteObj = new Medicament_fornisseur($id_med,$id_for);
+    $db = $commandObj2->connect_db();
+    if($db!=false){
+        $commandObj2->update_status($id_com,"accepter",$db);
+        $updateQteObj->updateQte($db,$qte);
+        echo json_encode(["error"=>false,"message"=>"order accepted"]);
+
+    }else{
+        echo json_encode(["error"=>true,"message"=>"error in database"]);
+    }
+}
+if(isset($_POST['refuseOrder'])){
+    $id_com = $_POST['id_com'];
+    $commandObj2 = new Commands();
+    $db = $commandObj2->connect_db();
+    if($db!=false){
+        $commandObj2->update_status($id_com,"refusee",$db);
+        echo json_encode(["error"=>false,"message"=>"order refused"]);
+
+    }else{
+        echo json_encode(["error"=>true,"message"=>"error in database"]);
+    }
+}
 
 
 ?>

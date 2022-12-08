@@ -130,16 +130,16 @@ class Commands{
             $results .='<div class="order_con">
             <div id="order_info">
                 <div>
-                    <h2 class="lable">Suplaire:</h2>
-                    <h2 id="suplaireName">'.$values['fornisseur'].'</h2>
+                    <h3 class="lable">Suplaire:</h3>
+                    <h3 id="suplaireName">'.$values['fornisseur'].'</h3>
                 </div>
                 <div>
-                    <h2 class="lable">Medicent:</h2>
-                    <h2 id="medicentName">'.$values['medecament'].'</h2>
+                    <h3 class="lable">Medicent:</h3>
+                    <h3 id="medicentName">'.$values['medecament'].'</h3>
                 </div>
                 <div>
-                    <h2 class="lable">QTE:</h2>
-                    <h2 id="orderedQte">'.$values['qte'].'</h2>
+                    <h3 class="lable">QTE:</h3>
+                    <h3 id="orderedQte">'.$values['qte'].'</h3>
                 </div>
             </div>
             <div id="order_underline"></div>
@@ -160,16 +160,16 @@ class Commands{
             $results .='<div class="order_con">
             <div id="order_info">
                 <div>
-                    <h2 class="lable">Suplaire:</h2>
-                    <h2 id="suplaireName">'.$values['fornisseur'].'</h2>
+                    <h3 class="lable">Suplaire:</h3>
+                    <h3 id="suplaireName">'.$values['fornisseur'].'</h3>
                 </div>
                 <div>
-                    <h2 class="lable">Medicent:</h2>
-                    <h2 id="medicentName">'.$values['medecament'].'</h2>
+                    <h3 class="lable">Medicent:</h3>
+                    <h3 id="medicentName">'.$values['medecament'].'</h3>
                 </div>
                 <div>
-                    <h2 class="lable">QTE:</h2>
-                    <h2 id="orderedQte">'.$values['qte'].'</h2>
+                    <h3 class="lable">QTE:</h3>
+                    <h3 id="orderedQte">'.$values['qte'].'</h3>
                 </div>
             </div>
             <div id="order_underline"></div>

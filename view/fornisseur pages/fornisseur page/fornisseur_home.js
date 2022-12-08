@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    
     //check access
     $.ajax({
         type: "get",
@@ -37,8 +38,71 @@ $(document).ready(function(){
         dataType: "JSON",
         success: function (response) {
             document.getElementById("display_commande").innerHTML = response.all_command
+            document.querySelectorAll(".accept_order").forEach((Element)=>{
+                Element.addEventListener('click',(e)=>{
+                    e.stopPropagation()
+                    acceptorder(e)
+                })
+            })
+            document.querySelectorAll(".refuse_order").forEach((Element)=>{
+                Element.addEventListener('click',(e)=>{
+                    e.stopPropagation()
+                    refuseorder(e)
+                    
+                })
+            })
         }
+        
     });
+    //for command start
+
+    function refuseorder(e){
+        var ele = e.target
+        var id_com = ele.getAttribute("id_com")
+        $.ajax({
+            type: "post",
+            url: "http://localhost/my-projects/school%20project/control/fornisseur_home_page_control.php",
+            data: {refuseOrder:"true",id_com:id_com},
+            dataType: "JSON",
+            success: function (response) {
+                if(response.error==true){
+                    ActiveErrorPopUp(response.message)
+                }else{
+                    ActiveSuccessPopUp(response.message)
+                    setTimeout(()=>{
+                        location.reload()
+                    },2000)
+                }
+            }
+        });
+        
+    }
+    function acceptorder(e){
+        var ele = e.target
+        var qteOrder = ele.getAttribute("orderedqte")
+        var id_com = ele.getAttribute("id_com")
+        var id_for = ele.getAttribute("id_for")
+        var id_med = ele.getAttribute("id_med")
+        $.ajax({
+            type: "post",
+            url: "http://localhost/my-projects/school%20project/control/fornisseur_home_page_control.php",
+            data: {acceptOrder:"true",id_com:id_com,id_med:id_med,id_for:id_for,qte:qteOrder},
+            dataType: "JSON",
+            success: function (response) {
+                if(response.error==true){
+                    ActiveErrorPopUp(response.message)
+                }else{
+                    ActiveSuccessPopUp(response.message)
+                    setTimeout(()=>{
+                        location.reload()
+                    },2000)
+                }
+            }
+        });   
+    }
+
+
+    //for command end
     //add popup
     $("#add_med").click(function(e){
         $("#add_popup").fadeIn();
@@ -391,7 +455,6 @@ $(document).ready(function(){
     })
     
     //code to controle edite popup
-
     //exite button
     $("#logout").click(()=>{
         $.ajax({
