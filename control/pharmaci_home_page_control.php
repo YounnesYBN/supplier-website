@@ -91,6 +91,29 @@ if(isset($_POST["add_order"])){
         echo json_encode(["error"=>true,"message"=>"error in database"]);
     }
 }
+if(isset($_POST["cancelOrder"])){
+    $id_com = $_POST['id_com'];
+    $CommandObj2 = new Commands();
+    $database = $CommandObj2->connect_db();
+    if($database != false){
+        $CommandObj2->update_status($id_com,"annule",$database);
+        echo json_encode(["error"=>false,"message"=>"order is canceled successfully"]) ;
+    }else{
+        echo json_encode(["error"=>true,"message"=>"error in database"]) ;
+    }
+}
+
+if(isset($_POST["DeleteOrder"])){
+    $id_com = $_POST['id_com'];
+    $CommandObj2 = new Commands();
+    $database = $CommandObj2->connect_db();
+    if($database != false){
+        $CommandObj2->delete_command($database,$id_com);
+        echo json_encode(["error"=>false,"message"=>"order just get deleted successfully"]) ;
+    }else{
+        echo json_encode(["error"=>true,"message"=>"error in database"]) ;
+    }
+}
 
 
 ?>

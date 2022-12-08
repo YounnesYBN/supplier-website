@@ -148,7 +148,7 @@ class Commands{
                     <h1 id="totla">'.$values['totale'].'</h1>
                     <img src="./total.png" alt="" width="30px">
                 </div>
-                <button class="Delete_canceled_button" id_command="1">Delete</button>
+                <button class="Delete_canceled_button" id_command="'.$values['id_com'].'">Delete</button>
             </div>
         </div>';
         }
@@ -178,7 +178,7 @@ class Commands{
                     <h1 id="totla">'.$values['totale'].'</h1>
                     <img src="./total.png" alt="" width="30px">
                 </div>
-                <button class="DeleteOrd_button" id_command="1">Delete</button>
+                <button class="DeleteOrd_button" id_command="'.$values['id_com'].'">Delete</button>
             </div>
         </div>';
 
