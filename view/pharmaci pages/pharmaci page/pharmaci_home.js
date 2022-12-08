@@ -99,6 +99,9 @@ $(document).ready(function () {
         priceOfOrderdMed = price
         $("#add_order").attr("ordered_id_med",id_med)
         $("#add_order").attr("ordered_id_for",id_for)
+        document.getElementById("qte_val").innerText = 1
+        Total = price
+        document.getElementById("order_total").innerText = price
 
     }
     function UnsetValuesForOrderPopup(){
@@ -107,6 +110,7 @@ $(document).ready(function () {
         priceOfOrderdMed =0
         $("#add_order").attr("ordered_id_med","")
         $("#add_order").attr("ordered_id_for","")
+        document.getElementById("set_qte").value = 1
 
     }    
     $(".add_command").click((e)=>{
@@ -118,6 +122,12 @@ $(document).ready(function () {
         UnsetValuesForOrderPopup()
         $("#order_popup").fadeOut()
         Total = 0
+    })
+    $("#add_order").click((e)=>{
+        var ordered_id_med = e.target.getAttribute("ordered_id_med")
+        var ordered_id_for = e.target.getAttribute("ordered_id_for")
+        console.log(Total,ordered_id_for,ordered_id_med,document.getElementById("set_qte").value)
+        
     })
     
     function OnRangeChange(e){
