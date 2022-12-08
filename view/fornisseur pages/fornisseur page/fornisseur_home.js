@@ -29,7 +29,16 @@ $(document).ready(function(){
     });
 
     //get user data every time we login
-
+    //get orders
+    $.ajax({
+        type: "get",
+        url: "http://localhost/my-projects/school%20project/control/fornisseur_home_page_control.php",
+        data: {getOrders:"true"},
+        dataType: "JSON",
+        success: function (response) {
+            document.getElementById("display_commande").innerHTML = response.all_command
+        }
+    });
     //add popup
     $("#add_med").click(function(e){
         $("#add_popup").fadeIn();

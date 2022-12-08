@@ -1,6 +1,7 @@
 <?php 
 include "./../module/medicaments.php";
 include "./../module/medicament_fornisseur.php";
+include "./../module/commands.php";
 session_start();
 if(isset($_GET["checkAccess"])){
 
@@ -37,6 +38,17 @@ if(isset($_GET["get_info"])){
     $medCom = $for->convert_array_to_medComponent($MedForArray);
 
     echo json_encode(["username"=>$username,"email"=>$email,"deleteOption"=>$deletOption,"editeOption"=>$editeOption,"medCom"=>$medCom]);
+}
+if(isset($_GET["getOrders"])){
+    $idfornisseur = $_SESSION["id"];
+    $commandObj  = new Commands($idfornisseur);
+    $db1 = $commandObj->connect_db();
+    if($db1 != false){
+        $commandArray = $commandObj->getAllOrdersOfFornisseur($db1);
+        $afterConvert = $commandObj->convertToFornisseurCommand($commandArray);
+        echo json_encode(["all_command"=>$afterConvert]);
+    }
+    
 }
 if(isset($_POST['delete'])){
     $id=$_POST['medIdDelete'];

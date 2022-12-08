@@ -147,6 +147,20 @@ class Medicament_fornisseur
         }
         
     }
+
+    public function updateQte($database,$how_much_to_take){
+        try{
+            $query = $database->prepare("update medi_forni set qte = qte - ? where id_med = ? and id_for = ?");
+            $query->execute([
+                $how_much_to_take ,
+                $this->med_id,
+                $this->for_id
+            ]);
+            return true;
+        }catch(Exception $e){
+            return false;
+        }
+    }
    
 }
 ?>

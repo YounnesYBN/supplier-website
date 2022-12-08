@@ -249,6 +249,18 @@ class Commands{
         }
         return $result ;
     }
+    public function delete_command($database,$id_com){
+        try{
+            $quiry4=$database->prepare("delete from commande WHERE id_com= ?");
+            $quiry4->execute(array(
+                $id_com
+            ));
+
+            return true;
+        }catch(Exception $e){
+            return false ;
+        }
+    }
     public function update_status($id_com,$status,$database){
         try{
             $quiry4=$database->prepare("UPDATE commande set command_status= ? WHERE id_com= ?");
@@ -261,6 +273,70 @@ class Commands{
         }catch(Exception $e){
             return false ;
         }
+    }
+    public function getAllOrdersOfFornisseur($database){
+        $array = array();
+        try {
+            $query = $database->prepare('
+                select id_com,id_for as "id_for",medicament.id_med as "id_med",pharmaci.id_par as "id_par",medicament.nom as "med_name",pharmaci.intitul as "par_name",qte,totale,command_status as "status" 
+                from commande
+                INNER join medicament on commande.id_med = medicament.id_med
+                INNER JOIN pharmaci on commande.id_par = pharmaci.id_par
+                WHERE id_for = ? and command_status = "en_coure"
+            ');
+            $query->execute([
+                $this->id_for
+            ]);
+            while($result = $query->fetch()){
+                $array[] = [
+                    "id_for" => $result["id_for"],
+                    "id_med" => $result["id_med"],
+                    "id_par" => $result["id_par"],
+                    "id_com" => $result["id_com"],
+                    "med_name"=> $result["med_name"],
+                    "par_name" => $result["par_name"],
+                    "qte" => $result["qte"],
+                    "totale" => $result["totale"],
+                    "status" => $result["status"]
+
+                ];
+            }
+            
+            return $array ;
+        } catch (Exception $th) {
+            return false ;
+        }
+    }
+    public function convertToFornisseurCommand($arrays){
+        $stringCon = "";
+        foreach ($arrays as $array ) {
+            $stringCon .=
+            '
+                <div id="order_con">
+                    <div id="order_info_con">
+                        <div id="info_con">
+                            <h3><img src="./buyer.png" alt="" width="30px">'.$array["par_name"].'</h3>
+                            <h3><img src="./gary pill.png" alt="" width="30px">'.$array["med_name"].'</h3>
+                            <h3><img src="./qte_order.png" alt="" width="30px">'.$array["qte"].'</h3>
+                        </div>
+                        <div id="total_con">
+                            <h1>
+                                '.$array["totale"].' <img src="./total.png" alt="" srcset="" width="30px">
+                            </h1>
+                        </div>
+                    </div>
+                    <div id="operation_order_con">
+                        <div id="underline_operation"></div>
+                        <div id="order_buttons_con">
+                            <button class="accept_order" id_com="'.$array["id_com"].'" id_for="'.$array["id_for"].'" id_med="'.$array["id_med"].'" orderedQte="'.$array["qte"].'">Accept</button>
+                            <button class ="refuse_order" id_com="'.$array["id_com"].'" >Refuse</button>
+                        </div>
+
+                    </div>
+                </div>
+            ';
+        }
+        return $stringCon ;
     }
     
 
