@@ -1014,13 +1014,16 @@ box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rg
   overflow:auto;
   background-color:#caffbfb6;
 }
+#display_commande::-webkit-scrollbar{
+  appearance: none;
+}
 #order_con{
   background-color: white;
   width: 90%;
   height: 30%;
   border-radius: 5px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  margin: 2% 0 2% 5%;
+  margin: 2% 0 4% 5%;
   display: flex;
 }
 #order_info_con{
