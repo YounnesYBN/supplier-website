@@ -36,6 +36,8 @@ $(document).ready(function () {
 
     
     searchwayAllWays()
+    //
+   
     //check Access
     $.ajax({
         type: "get",
@@ -61,6 +63,27 @@ $(document).ready(function () {
             document.getElementById("email").innerText += response.email;
         }   
     });
+    // refusee data
+    $.ajax({
+        type:"get",
+        url:"http://localhost/my-projects/school%20project/control/pharmaci_home_page_control.php",
+        data:{getdataR:"true"},
+        dataType:"JSON",
+        success:function(reponse){
+            document.querySelector("#all_commande_refused #display").innerHTML=reponse.get_refusee
+            
+        }
+    })
+    // 
+    $.ajax({
+        type:"get",
+        url:"http://localhost/my-projects/school%20project/control/pharmaci_home_page_control.php",
+        data:{getdataA:"true"},
+        dataType:"JSON",
+        success:function(reponse){
+            document.querySelector("#all_commande_canceled #display").innerHTML=reponse.get_anul;
+        }
+    })
     //exite button
     $("#logout").click(()=>{
         $.ajax({

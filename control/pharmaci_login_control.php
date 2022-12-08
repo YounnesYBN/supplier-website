@@ -1,6 +1,7 @@
 <?php
 session_start();
 include "./../module/pharmaci.php";
+
 if(isset($_POST["login"])){
 
     $_SESSION["pharmaci"] = true;
@@ -25,5 +26,7 @@ if(isset($_POST["login"])){
     }
 
 }
+
+
 
 ?>
