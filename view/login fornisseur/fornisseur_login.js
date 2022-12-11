@@ -49,12 +49,13 @@ $(document).ready(()=>{
     $("#email").keyup(function(e){
         onEmailChange()
     })
-
+    
     $("#password").keyup(function (e) { 
         onPasswordChange()
     });
 
-    $("#logInForm").submit(function(e){
+    $("#logInButton").click(function(e){
+        e.stopPropagation()
         onEmailChange();
         onPasswordChange();
         if(emailValid==true & passwordValid==true){
@@ -79,14 +80,9 @@ $(document).ready(()=>{
         }else{
             var message = emailValid==false&passwordValid==false?"-Email is unvalide Exemple: 'username@gmail.com' <br> -passwored is unvalide .":emailValid==false?"-Email is unvalide Exemple: 'username@gmail.com'":"-passwored is unvalide ." ;
             ActivePopUp(message)
-            e.preventDefault() 
         }
     })
-
-    $("#logInButton").click(function(){
-        onEmailChange();
-        onPasswordChange();
-    })
+    
     
     
 })

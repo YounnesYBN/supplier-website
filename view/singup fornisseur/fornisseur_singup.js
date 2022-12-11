@@ -165,6 +165,7 @@ $(document).ready(()=>{
 
 
     $("#submitBtn").click(function(e){
+        e.stopPropagation()
         onUserNameChange();
         onEmailChange();
         onAdressChange();
@@ -172,9 +173,6 @@ $(document).ready(()=>{
         onPasswordChange();
         onPasswordConfirmChange();
         
-    })
-
-    $("#FornisseurSingupForm").submit(function(e){
         if(userNameValid==true&&emailValid==true&&adressValid==true&&telValid==true&&passwordValid==true&&checkPasswordValid==true){
             //send data with ajax
             var username = document.getElementById("userName").value;
@@ -200,7 +198,6 @@ $(document).ready(()=>{
             });
             
         }else{
-            e.preventDefault()
             var message = convertErrorList()
             ActivePopUp(message)
         }

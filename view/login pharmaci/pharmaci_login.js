@@ -50,12 +50,13 @@ $(document).ready(()=>{
     $("#email").keyup(function(e){
         onEmailChange()
     })
-
+    
     $("#password").keyup(function (e) { 
         onPasswordChange()
     });
-
-    $("#pharmaci_login_form").submit(function(e){
+    
+    $("#logbutton").click(function(e){
+        e.stopPropagation()
         onEmailChange();
         onPasswordChange();
         if(emailValid==true & passwordValid==true){
@@ -78,14 +79,9 @@ $(document).ready(()=>{
         }else{
             var message = emailValid==false&passwordValid==false?"-Email is unvalide Exemple: 'username@gmail.com' <br> -passwored is unvalide at least 8 caracter .":emailValid==false?"-Email is unvalide Exemple: 'username@gmail.com'":"-passwored is unvalide at least 8 caracter ." ;
             ActivePopUp(message)
-            e.preventDefault() 
         }
     })
 
-    $("#logbutton").click(function(){
-        onEmailChange();
-        onPasswordChange();
-    })
 
     
 })
