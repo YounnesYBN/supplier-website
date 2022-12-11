@@ -192,7 +192,7 @@ $(document).ready(function(){
         const numberVal = numberEle.value;
         const nbrrgx= /^[0-9]{1,}$/
         const test = nbrrgx.test(numberVal)
-        if(test == true){
+        if(test == true && numberVal != 0){
             numberEle.style.borderColor = "#00d4ff";
             numberValidAdd = true;
             addErrorObject.numberErr=""
@@ -207,9 +207,9 @@ $(document).ready(function(){
     function onPriceChange(){
         const priceEle = document.getElementById("price");
         const priceVal = priceEle.value;
-        const  pricrgx= /^[0-9]{1,}$/
+        const  pricrgx= /^([0-9]+([.][0-9]+)?|[0-9]+)$/
         const test = pricrgx.test(priceVal)
-        if(test == true){
+        if(test == true && priceVal != 0 ){
             priceEle.style.borderColor = "#00d4ff";
             priceValidAdd = true;
             addErrorObject.priceErr="";
@@ -355,7 +355,7 @@ $(document).ready(function(){
         const numberVal = numberEle.value;
         const nbrrgx= /^[0-9]{1,}$/
         const test = nbrrgx.test(numberVal)
-        if(test == true){
+        if(test == true && numberVal!= 0){
             numberEle.style.borderColor = "#00d4ff";
             numberValidEdite  = true;
             editeErrorObject.numberErr=""
@@ -370,9 +370,9 @@ $(document).ready(function(){
     function onPriceChangeEdite(){
         const priceEle = document.getElementById("price_edite");
         const priceVal = priceEle.value;
-        const  pricrgx= /^[0-9]{1,}$/
+        const  pricrgx= /^([0-9]+([.][0-9]+)?|[0-9]+)$/
         const test = pricrgx.test(priceVal)
-        if(test == true){
+        if(test == true && priceVal != 0){
             priceEle.style.borderColor = "#00d4ff";
             priceValidEdite = true;
             editeErrorObject.priceErr="";

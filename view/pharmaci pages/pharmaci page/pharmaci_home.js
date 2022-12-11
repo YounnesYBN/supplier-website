@@ -272,8 +272,9 @@ $(document).ready(function () {
     }
     function onPriceGrateChange(){
         var ele = document.getElementById("PriceGrater")
-        var PriceGrateVal = parseInt(ele.value)
-        var check1 = /^[0-9]{0,}$/
+        var PriceGrateVal = parseFloat(ele.value)
+        console.log(PriceGrateVal)
+        var check1 = /^([0-9]+([.][0-9]+)?|[0-9]+)$/
         var check2 = PriceGrateVal >= PriceBetween.min.val 
         if(check1.test(PriceGrateVal)==true && check2 == true){
             PriceBetween.max.val = PriceGrateVal
@@ -288,8 +289,9 @@ $(document).ready(function () {
     
     function onPriceLessChange(){
         var ele = document.getElementById("PriceLess")
-        var PriceLessVal = parseInt(ele.value)
-        var check1 = /^[0-9]{0,}$/
+        var PriceLessVal = parseFloat(ele.value)
+        console.log(PriceLessVal)
+        var check1 = /^([0-9]+([.][0-9]+)?|[0-9]+)$/
         var check2 = PriceLessVal <= PriceBetween.max.val
         if(check1.test(PriceLessVal)==true & check2==true){
             PriceBetween.min.val = PriceLessVal
@@ -304,8 +306,8 @@ $(document).ready(function () {
     }
     function onQteGrateChange(){
         var ele = document.getElementById("QteGrater")
-        var PriceGrateVal = parseInt(ele.value)
-        var check1 = /^[0-9]{0,}$/
+        var PriceGrateVal = parseFloat(ele.value)
+        var check1 = /^([0-9]+([.][0-9]+)?|[0-9]+)$/
         var check2 = PriceGrateVal >= QteBetween.min.val 
         if(check1.test(PriceGrateVal)==true && check2 == true){
             QteBetween.max.val = PriceGrateVal
@@ -320,8 +322,9 @@ $(document).ready(function () {
     
     function onQteLessChange(){
         var ele = document.getElementById("QteLess")
-        var PriceLessVal = parseInt(ele.value)
-        var check1 = /^[0-9]{0,}$/
+        var PriceLessVal = parseFloat(ele.value)
+        console.log(PriceLessVal)
+        var check1 = /^([0-9]+([.][0-9]+)?|[0-9]+)$/
         var check2 = PriceLessVal <= QteBetween.max.val
         if(check1.test(PriceLessVal)==true & check2==true){
             QteBetween.min.val = PriceLessVal
@@ -806,6 +809,8 @@ $(document).ready(function () {
                     searchWay = "qte"
                 }else if(PriceFilter.isActive==true){
                     searchWay = "price"
+                }else{
+                    searchWay = "allData"
                 }
             }
         }
